@@ -1,0 +1,606 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+/* ============================
+   HEADER
+============================ */
+/* Загальний стиль хедера */
+/* Загальний стиль хедера */
+/* Десктопні стилі */
+.header {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    
+    /* === КРИТИЧНЕ ВИПРАВЛЕННЯ === */
+    /* 1. Накладаємо ТЕМНИЙ ГРАДІЄНТ (напівпрозорий) */
+    /* 2. Додаємо ФОНОВЕ ЗОБРАЖЕННЯ (ваші гори) */
+    background: 
+        linear-gradient(
+            180deg, 
+            rgba(20, 33, 61, 0.7) 0%,   /* Темно-синій, 70% прозорості */
+            rgba(0, 0, 0, 0.5) 100%     /* Чорний, 50% прозорості */
+        ), 
+        url('images5/headerhome.jpg') no-repeat center/cover;
+    /* ============================= */
+    
+    /* Гарантуємо, що фон відображається коректно */
+    background-size: cover;
+    background-position: center;
+}
+.logo img {
+    width: 140px;
+}
+.nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav a:hover {
+    color: #f5b921;
+}
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+.social-icons a {
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+.social-icons a:hover {
+    color: #f5b921;
+}
+/* ======= БУРГЕР: Прихований на ПК ======= */
+.burger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+#closeIcon {
+    display: none;
+}
+
+/* ======= МОБІЛЬНА ВЕРСІЯ (max-width: 768px) ======= */
+/* ======= МОБІЛЬНА ВЕРСІЯ (max-width: 768px) ======= */
+@media (max-width: 768px) {
+    /* 1. КОНТЕЙНЕР ШАПКИ */
+    .header .container {
+        padding: 15px 20px;
+        width: 100%;
+    }
+    .logo img {
+        width: 120px;
+    }
+    .social-icons {
+        display: none; /* Ховаємо соцмережі на мобільному */
+    }
+
+    /* 2. БУРГЕР: Показаний */
+    .burger {
+        display: block;
+        position: relative; /* В потоці шапки */
+        z-index: 1001;
+    }
+    #closeIcon {
+        display: none;
+    }
+
+    /* 3. СТАН МЕНЮ: ЗАКРИТО */
+    .nav {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+
+        /* Початкове положення - за межами екрана або приховане */
+        position: fixed; 
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Меню займає всю висоту екрана */
+        z-index: 999; 
+    }
+    
+    /* 4. СТАН МЕНЮ: ВІДКРИТО (.nav.open) */
+    .nav.open {
+        opacity: 1;
+        visibility: visible;
+        
+        /* Фон меню: градієнт-накладка + ваше зображення гір */
+        background: 
+            linear-gradient(
+                rgba(0, 0, 0, 0.4), /* Темний шар для читабельності */
+                rgba(0, 0, 0, 0.4) 
+            ), 
+            url('images5/headerhome.jpg') no-repeat center/cover;
+            
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 5. ВИПРАВЛЕННЯ: ЕЛЕМЕНТИ ПРИ ВІДКРИТОМУ МЕНЮ */
+    .header.menu-open .logo {
+        display: none; /* Ховаємо логотип */
+    }
+    
+    .header.menu-open .burger {
+        position: fixed; /* Робимо іконку "X" фіксованою */
+        right: 20px;
+        top: 25px;
+        z-index: 1001; 
+    }
+
+    /* 6. СТИЛІ СПИСКУ МЕНЮ */
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Збільшуємо відступи між елементами */
+        padding: 0; 
+        margin-top: 50px; /* Додаємо відступ від верхнього краю */
+    }
+    .nav a {
+        color: white;
+        font-size: 32px; /* Збільшуємо розмір шрифту */
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    .nav a:hover {
+        color: #f5b921;
+    }
+}
+/* ================================================= */
+/* 1. БАЗОВІ НАЛАШТУВАННЯ ТА ФОН 404 */
+/* ================================================= */
+.error-section {
+    min-height: calc(100vh - 70px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+
+    /* ГРАДІЄНТНИЙ ФОН */
+    background: linear-gradient(
+        180deg, 
+        #14213d 0%, 
+        #0f172a 70%, 
+        #020409 100% 
+    );
+    color: white;
+}
+
+
+/* ================================================= */
+/* 2. FLEXBOX ДЛЯ РОЗДІЛЕННЯ НА ДВІ КОЛОНКИ (Десктоп) */
+/* ================================================= */
+.error-layout {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+/* ЛІВА ЧАСТИНА: МІСЦЕ ДЛЯ ФОТО */
+.error-image-placeholder {
+    flex-basis: 45%; 
+    text-align: center;
+}
+.error-image-placeholder img {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* ПРАВА ЧАСТИНА: ТЕКСТ */
+.error-content {
+    flex-basis: 50%; 
+}
+
+/* ВИРІВНЮВАННЯ ТЕКСТУ (ЗЛІВА В БЛОЦІ) */
+.error-title,
+.error-subtitle,
+.error-text {
+    text-align: left; 
+}
+
+
+/* ================================================= */
+/* 3. ТЕКСТОВІ ЕЛЕМЕНТИ */
+/* ================================================= */
+.error-title {
+    font-size: 100px; /* Зменшено для двоколонкового макета */
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+    line-height: 1;
+}
+
+.error-subtitle {
+    font-size: 28px; /* Зменшено для двоколонкового макета */
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #f5b921; /* Акцентний колір */
+}
+
+.error-text {
+    font-size: 18px;
+    margin-bottom: 30px; /* Зменшено відступ, щоб кнопки були ближче */
+    line-height: 1.6;
+}
+
+.error-buttons {
+    margin-top: 30px;
+    /* Кнопки вирівняні по лівому краю батьківського блоку */
+    text-align: left; 
+}
+
+
+/* ================================================= */
+/* 4. СТИЛІ КНОПОК (ЗБЕРЕЖЕНІ ЯК НА ФОТО) */
+/* ================================================= */
+.error-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin-right: 15px; /* Збільшено відступ між кнопками */
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, opacity 0.3s;
+    font-size: 16px;
+}
+
+/* Кнопка "Назад" (Темна з жовтою рамкою) */
+.error-btn.accent {
+    background-color: transparent;
+    border: 2px solid #f5b921;
+    color: #f5b921;
+}
+.error-btn.accent:hover {
+    background-color: #f5b921;
+    color: #14213d;
+}
+
+/* Кнопка "На головну" (Оранжева) */
+.error-btn.primary {
+    background-color: #ff8c00; 
+    border: 2px solid #ff8c00;
+    color: white;
+}
+.error-btn.primary:hover {
+    background-color: #cc7000;
+    border-color: #cc7000;
+}
+
+
+/* ================================================= */
+/* 5. МОБІЛЬНА АДАПТАЦІЯ (max-width: 768px) */
+/* ================================================= */
+@media (max-width: 768px) {
+    .error-layout {
+        flex-direction: column; /* Стовпчиком: Фото, потім Текст */
+    }
+    .error-image-placeholder,
+    .error-content {
+        flex-basis: 100%; 
+        margin-bottom: 30px;
+    }
+    
+    /* Центрування тексту та кнопок на мобільному */
+    .error-content,
+    .error-buttons,
+    .error-title,
+    .error-subtitle,
+    .error-text {
+        text-align: center;
+    }
+    
+    /* Збільшення заголовка на мобільному, оскільки він займає всю ширину */
+    .error-title {
+        font-size: 120px; 
+    }
+    
+    .error-btn {
+        display: block; /* Кнопки на всю ширину */
+        margin: 15px 0; /* Додаємо відступи між кнопками */
+    }
+}
+
+:root {
+  --footer-bg: url('images2/footer.jpg');
+  --overlay: rgba(8, 15, 30, .62);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.82);
+  --accent: #ff5a2c;
+  --maxw: 1200px;
+  --radius: 14px;
+}
+.travel-footer {
+  color: var(--text);
+  background-image: linear-gradient(var(--overlay), var(--overlay)), var(--footer-bg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.footer__inner {
+  max-width: var(--maxw);
+  width: 100%;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  padding-top: 28px;
+  padding-right: 16px;
+  padding-bottom: 24px;
+  padding-left: 16px;
+}
+
+.footer__title {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 18px;
+  margin-left: 0;
+  font-size: clamp(10px, 6vw, 24px);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.accent {
+  color: #fff;
+}
+
+.footer__grid {
+  display: grid;
+  gap: 22px;
+}
+
+.footer__heading {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+  margin-top: 2px;
+  margin-right: 0;
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+
+.footer__address {
+  font-style: normal;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.btn-mail {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  padding-top: 10px;
+  padding-right: 14px;
+  padding-bottom: 10px;
+  padding-left: 14px;
+  border-radius: 3px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-mail:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.footer__phone {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer__phone:hover {
+  text-decoration: underline;
+}
+
+/* Socials */
+.socials {
+  list-style: none;
+  padding-top: 12px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.socials__link {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,.12);
+  text-decoration: none;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  color: #fff;
+  opacity: 0.95;
+}
+
+/* Bottom row */
+.footer__bottom {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  align-items: center;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+}
+
+.footer__links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer__links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+/* Payment icons */
+.payments {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  height: 25px;
+  
+}
+
+.pay {
+  display: inline-flex;
+}
+
+.pay__svg {
+  width: 64px;
+  height: 24px;
+}
+
+.pay__bg {
+  fill: rgba(255,255,255,.12);
+}
+
+.pay text {
+  fill: #fff;
+}
+
+/* ===== Breakpoints ===== */
+
+/* b) 481—768px (tablets) */
+@media (min-width: 481px) {
+  .footer__inner {
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 26px;
+    padding-left: 20px;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .payments {
+    justify-content: flex-end;
+  }
+  .footer__bottom {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* c) 769—1024px (small screens, laptops) */
+@media (min-width: 769px) {
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ліва колонка: заголовок, права колонка: Address+Contact */
+    align-items: start;
+    gap: 40px;
+  }
+
+  .footer__info {
+    display: flex;
+    gap: 60px; /* відстань між Address і Contact */
+    align-items: flex-start; /* вирівняння по верхньому краю */
+  }
+
+  .footer__col {
+    flex: 1;
+  }
+}
+
+/* d) 1025—1200px (desktops) */
+@media (min-width: 1025px) {
+  .footer__title {
+    font-size: clamp(34px, 4vw, 48px);
+  }
+  .footer__inner {
+    padding-top: 70px;
+    padding-right: 24px;
+    padding-bottom: 34px;
+    padding-left: 24px;
+  }
+}
+
+/* e) 1201px+ (xl screens & TV) */
+@media (min-width: 1201px) {
+  .footer__inner {
+    padding-top: 80px;
+    padding-right: 0;
+    padding-bottom: 40px;
+    padding-left: 0;
+  }
+  .footer__grid {
+    gap: 36px;
+  }
+  .socials__link {
+    width: 38px;
+    height: 38px;
+  }
+
+}/* Встановлюємо box-sizing для всіх елементів */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+  html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
