@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Travel - Our Packages</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a2e0ad02e0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+ <header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="images2/logotravel.png" alt="Love Travel Logo" />
+    </div>
+
+    <!-- Навігація -->
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Соцмережі -->
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <!-- Бургер-кнопка -->
+    <div id="burger" class="burger" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+      <i id="openIcon" class="fa-solid fa-bars"></i>
+      <i id="closeIcon" class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+</header>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Our Packages</h1>
+            </div>
+
+            <!-- нижні кнопки -->
+    <div class="bottom-controls">
+  <div class="left-filters">
+    <div class="filter">
+      <span>PRICE</span>
+      <i class="fa fa-angle-down"></i>
+    </div>
+    <div class="filter">
+      <span>NAME</span>
+      <i class="fa fa-angle-down"></i>
+    </div>
+  </div>
+
+  <!-- місце під PNG-іконки -->
+  <div class="view-buttons">
+    <img src="images2/windowicon.png" alt="Grid View" class="view-icon">
+    <img src="images2/windoworange.png" alt="List View" class="view-icon">
+  </div>
+</div>
+    </section>
+    <section class="tour-section">
+  <div class="tour-container">
+    <!-- Filter Sidebar -->
+    <aside class="tour-filters">
+  <h3>Select your destination :</h3>
+  <select class="filter-select">
+    <option>All Destinations</option>
+    <option>Thailand</option>
+    <option>Japan</option>
+    <option>Vietnam</option>
+  </select>
+
+  <h3>Select your date :</h3>
+  <input type="date" class="filter-date" />
+
+  <h3>Typologies :</h3>
+  <div class="filter-grid">
+    <label><input type="checkbox" /> Sports Activities</label>
+    <label><input type="checkbox" /> Heritage Tours</label>
+    <label><input type="checkbox" /> Budget Travel</label>
+    <label><input type="checkbox" /> Eco-tourism</label>
+    <label><input type="checkbox" /> Beach Holidays</label>
+    <label><input type="checkbox" /> Family-Friendly</label>
+    <label><input type="checkbox" /> Road Trips</label>
+    <label><input type="checkbox" /> Culinary Tourism</label>
+    <label><input type="checkbox" /> Adventure Travel</label>
+    <label><input type="checkbox" /> Cultural Tours</label>
+  </div>
+
+  <h3>Max Price :</h3>
+  <input type="range" min="100" max="5000" value="2500" class="price-range" />
+  <p>$ <span id="priceValue">2500</span></p>
+  <label class="check-inline"><input type="checkbox" /> See only promotions</label>
+
+  <h3>Durations :</h3>
+  <div class="filter-grid">
+    <label><input type="checkbox" /> 1 Week</label>
+    <label><input type="checkbox" /> 5 Days</label>
+    <label><input type="checkbox" /> 10 Days</label>
+    <label><input type="checkbox" /> 15 Days</label>
+  </div>
+
+  <h3>Difficulty :</h3>
+  <div class="filter-grid">
+    <label><input type="checkbox" /> Easy</label>
+    <label><input type="checkbox" /> Medium</label>
+    <label><input type="checkbox" /> Difficult</label>
+    <label><input type="checkbox" /> Challenging</label>
+  </div>
+
+  <h3>Min Age :</h3>
+  <div class="filter-grid">
+    <label><input type="checkbox" /> 0</label>
+    <label><input type="checkbox" /> 5</label>
+    <label><input type="checkbox" /> 16</label>
+    <label><input type="checkbox" /> 18</label>
+  </div>
+</aside>
+    <!-- Tours List -->
+    <div class="tour-cards">
+  <div class="tour-card">
+    <div class="tour-image">
+      <img src="images2/chiang.jpg" alt="Chiang Mai" />
+    </div>
+    <div class="tour-info">
+      <p class="tour-duration">1 Week</p>
+      <h4>Chiang Mai</h4>
+      <p class="tour-location">Chiang Mai</p>
+      <p class="tour-desc">
+        Visit the temples and the Chiang Mai Night Bazaar, a huge market located on Chiang Klan Road.
+      </p>
+      <div class="tour-footer">
+        <button class="details-btn">Details</button>
+        <p class="price">From <span>$490</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tour-card">
+    <div class="tour-image">
+      <img src="images2/chao.jpg" alt="Chao Phraya" />
+    </div>
+    <div class="tour-info">
+      <p class="tour-duration">5 Days</p>
+      <h4>Chao Phraya</h4>
+      <p class="tour-location">Chao Phraya</p>
+      <p class="tour-desc">
+        Boat tour in Bangkok to see the beautiful palaces and monuments from the water.
+      </p>
+      <div class="tour-footer">
+        <button class="details-btn">Details</button>
+        <p class="price">From <span>$980</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tour-card">
+    <div class="tour-image">
+      <img src="images2/banghkok.jpg" alt="Bangkok" />
+    </div>
+    <div class="tour-info">
+      <p class="tour-duration">10 Days</p>
+      <h4>Bangkok</h4>
+      <p class="tour-location">Bangkok</p>
+      <p class="tour-desc">
+        Culinary and cultural trip to Thailand’s capital with monuments and Buddha statues.
+      </p>
+      <div class="tour-footer">
+        <button class="details-btn">Details</button>
+        <p class="price">From <span>$1000</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tour-card">
+    <div class="tour-image">
+      <img src="images2/nara.jpg" alt="Nara" />
+    </div>
+    <div class="tour-info">
+      <p class="tour-duration">15 Days</p>
+      <h4>Nara</h4>
+      <p class="tour-location">Japan</p>
+      <p class="tour-desc">
+        Discover the incredible landmarks such as the Todai-ji temple and its famous Great Buddha statue.
+      </p>
+      <div class="tour-footer">
+        <button class="details-btn">Details</button>
+        <p class="price">From <span>$890</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+
+<!-- Pagination -->
+<div class="pagination">
+  <button class="page-btn active" data-page="1">1</button>
+  <button class="page-btn" data-page="2">2</button>
+  <button class="page-btn" data-page="3">3</button>
+  <button class="page-btn" data-page="4">4</button>
+  <button class="page-btn" data-page="5">5</button>
+</div>
+</section>
+<footer class="travel-footer">
+  <div class="footer__inner">
+    <h2 class="footer__title">
+      <span class="accent"></span>
+    </h2>
+
+
+
+<div class="footer__grid">
+  <!-- Ліва колонка -->
+  <h2 class="footer__title">
+    Подорожуйте за межі своєї уяви, <br>
+    з нашим <span class="accent">Туристичне агентство!</span>
+  </h2>
+
+  <!-- Права колонка -->
+  <div class="footer__info">
+    <!-- Адреса -->
+    <div class="footer__col">
+      <h3 class="footer__heading">Адреса</h3>
+      <p class="footer__address">
+        1080 Брікелл-авеню<br>
+        Маямі – Флорида<br>
+        Сполучені Штати Америки
+      </p>
+      <ul class="socials">
+        <li><a href="#"><img src="images2/acebook.png" alt="Facebook"></a></li>
+        <li><a href="#"><img src="images2/twitter.png" alt="Twitter"></a></li>
+        <li><a href="#"><img src="images2/youtube.png" alt="YouTube"></a></li>
+      </ul>
+    </div>
+
+    <!-- Контакти -->
+    <div class="footer__col">
+      <h3 class="footer__heading">Контакти</h3>
+      <a href="mailto:info@travel.com" class="btn-mail">info@travel.com</a>
+      <p><a href="tel:+01483593284" class="footer__phone">+01 483 593 284</a></p>
+    </div>
+  </div>
+</div>
+
+    <!-- Bottom -->
+    <div class="footer__bottom">
+      <div class="footer__links">
+        <a href="#">Тема ВордПресс для подорожей</a>
+        <span class="dot">•</span>
+        <a href="#">Оренда</a>
+        <span class="dot">•</span>
+        <a href="#">Страхування</a>
+      </div>
+      <div class="payments">
+        <img src="images2/visa.png" alt="Visa">
+        <img src="images2/sigma.png" alt="Stripe">
+        <img src="images2/paypal.png" alt="Paypal">
+        <img src="images2/mastercard.png" alt="Mastercard">
+      </div>
+    </div>
+  </div>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>
