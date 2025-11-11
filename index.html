@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  integrity="sha512-T8f5Zy8Lw+u5zE8B2hxXYhZK0vKpKp6mgvqS/XfN7zY5Vb5fWzR+V2U6OxvXY5v8vD4Wea4b4ZKk6fU3Yv2+jA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+  <title>Snow Adventure</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="preloader">
+  <div class="loader-content">
+    <img src="images/logotravel.png" alt="Logo" class="loader-logo">
+    <p>Завантаження...</p>
+  </div>
+</div>
+  <header class="header">
+  <div class="logo">
+    <img src="images/logotravel.png" alt="LogoTravel" class="logo">
+  </div>
+
+  <!-- Десктопна навігація -->
+  <nav class="nav-desktop">
+    <ul>
+      <li><a href="#" class="active">Головна</a></li>
+      <li><a href="otherpages/search.html">Подорожі</a></li>
+       <li><a href="destinations/destinations.html">Пункти призначень</a></li>
+      <li><a href="#">Покупки</a></li>
+      <li><a href="sportblog/sport.html">Блог</a></li>
+<li><a href="#" class="open-modal">Звязок з нами</a></li> 
+    </ul>
+  </nav>
+
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+
+  <!-- Мобільне бургер-меню -->
+<div id="burger" class="burger" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+  <i id="openIcon" class="fa-solid fa-bars"></i>
+  <i id="closeIcon" class="fa-solid fa-xmark" style="display:none"></i>
+</div>
+
+  <!-- Мобільна навігація (твоя існуюча) -->
+  <nav class="nav" id="nav">
+    <ul>
+      <li><a href="#" class="active">Головна</a></li>
+      <li><a href="#">Подорожі</a></li>
+      <li><a href="#">Сторінки</a></li>
+      <li><a href="#">Покупки</a></li>
+      <li><a href="#">Блог</a></li>
+<li><a href="#" class="open-modal">Звязок з нами</a></li>
+
+    </ul>
+  </nav>
+</header>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Звязок з нами</h2>
+    <form id="contactForm">
+      <label for="name">Ім'я:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Емейл:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Повідомлення:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit" class="send-btn">Відправити</button>
+    </form>
+  </div>
+</div>
+
+  <section class="hero">    
+    <div class="hero-content">
+      <h1>
+        <span class="snow">Сніжна</span>
+        <span class="adventure">Пригода</span>
+      </h1>
+      <p>
+           Не чекайте, відкрийте для себе найкращі гори та лижі або сноуборди по всьому світу 
+        і насолоджуйтесь часом, проведеним з друзями.
+      </p>
+      <div class="search-box">
+        <div class="select">
+          <label for="destinations"><b>Напрямки</b></label>
+          <select id="destinations">
+            <option>Всі напрямки</option>
+            <option>Альпи</option>
+            <option>Скелясті гори</option>
+            <option>Гімалаї</option>
+          </select>
+        </div>
+        <button class="search-btn">Пошук</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="image-box">
+        <img src="images/mbnormphoto.png" alt="Snow Adventure" class="main-img">
+           <div class="floating-buttons">
+    <button class="btn blue">Всі демо-версії</button>
+    <button class="btn orange">Придбати</button>
+  </div>
+      </div>
+    </div>
+  </section>
+<section class="trip-info">
+  <div class="container-trip">
+    <p class="trip-sub">Мрія про ідеальне місце для відпустки</p>
+    <h2>Плануйте подорож життя з легкістю</h2>
+    <p class="trip-text">
+      Незалежно від того, чи шукаєте ви романтичну подорож, сімейну пригоду чи подорож наодинці, щоб дослідити світ,
+  туристичне агентство може запропонувати вам індивідуальний маршрут, який перевершить ваші очікування.
+    </p>
+    <button class="more-btn">Більше інформації</button>
+
+    <!-- Кольорові кнопки -->
+    <div class="trip-buttons">
+      <div class="trip-card orange">
+        <img src="images/city_walks_tour.jpg" alt="City Walks Tour">
+        <div class="overlay">
+          <i class="fa-solid fa-medal"></i>
+          <span>Екскурсія по місту</span>
+        </div>
+      </div>
+
+      <div class="trip-card blue">
+        <img src="images/electric_kikes.jpg" alt="Electric Bikes">
+        <div class="overlay">
+          <i class="fa-solid fa-bicycle"></i>
+          <span>Електричні велосипеди</span>
+        </div>
+      </div>
+
+      <div class="trip-card orange">
+        <img src="images/Skyscrapers_Viev.jpg" alt="Skyscrapers View">
+        <div class="overlay">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <span>Вид на хмарочоси</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Картки турів -->
+    <div class="trip-list">
+      <div class="tour-card">
+        <img src="images/Chang_Mai.jpg" alt="Chiang Mai">
+        <div class="tour-info">
+          <div class="tour-top">
+            <span>1 тиждень</span>
+            <div class="icons">
+              <i class="fa-solid fa-envelope orange-icon"></i>
+              <i class="fa-solid fa-route blue-icon"></i>
+            </div>
+          </div>
+          <h3>Чіангмай</h3>
+          <p class="country"><i class="fa-solid fa-location-dot"></i> Тайланд</p>
+          <p class="desc">Відвідайте храми та нічний базар Чіанг Мая, величезний ринок, розташований на вулиці Чанг Клан.</p>
+          <div class="tour-bottom">
+            <button class="details-btn">Деталі</button>
+            <div class="price">Від <span>$490</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card sale">
+        <img src="images/Chao_Phraya.jpg" alt="Chao Phraya">
+        <div class="tour-info">
+          <div class="tour-top">
+            <span>5 Днів</span>
+            <div class="icons">
+              <i class="fa-solid fa-envelope orange-icon"></i>
+              <i class="fa-solid fa-route blue-icon"></i>
+            </div>
+          </div>
+          <h3>Чао Прая</h3>
+          <p class="country"><i class="fa-solid fa-location-dot"></i> Тайланд</p>
+          <p class="desc">Екскурсія на човні по столиці Таїланду, Бангкоку, щоб побачити прекрасні палаци і пам'ятники з води.</p>
+          <div class="tour-bottom">
+            <button class="details-btn">Деталі</button>
+            <div class="price">Від <span>$98</span> <del>$134</del></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card sale">
+        <img src="images/Banghkok.jpg" alt="Bangkok">
+        <div class="tour-info">
+          <div class="tour-top">
+            <span>10 Днів</span>
+            <div class="icons">
+              <i class="fa-solid fa-envelope orange-icon"></i>
+              <i class="fa-solid fa-route blue-icon"></i>
+            </div>
+          </div>
+          <h3>Бангкок</h3>
+          <p class="country"><i class="fa-solid fa-location-dot"></i> Thailand</p>
+          <p class="desc">Чудова кулінарна та культурна подорож до столиці Таїланду з її чудовими пам'ятками та статуями Будди.</p>
+          <div class="tour-bottom">
+            <button class="details-btn blue">Деталі</button>
+            <div class="price">Від <span>$1000</span> <del>$1023</del></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- Vacation Search Section -->
+  <section class="vacation-section">
+    <div class="vacation-content">
+      <p class="vacation-sub">Виберіть свою подорож</p>
+      <h2 class="vacation-title">Почніть свою <span>подорож</span> прямо зараз</h2>
+      <p class="vacation-desc">
+        Шукаєте місце для мрійної відпустки, але не знаєте, з чого почати? 
+        За допомогою досвідчених і обізнаних туристичних агентів ви зможете легко спланувати 
+        подорож свого життя.
+      </p>
+
+      <div class="vacation-search">
+        <div class="vacation-item">
+          <i class="fas fa-search"></i>
+          <div>
+            <label>Пошук</label>
+            <input type="text" placeholder="Вставте ключове слово">
+          </div>
+        </div>
+
+        <div class="vacation-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <label>Напрямки</label>
+            <select>
+              <option>Всі напрямки</option>
+              <option>Париж</option>
+              <option>Рим</option>
+              <option>Нью Йорк</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="vacation-item">
+          <i class="fas fa-list"></i>
+          <div>
+            <label>Типології</label>
+            <select>
+              <option>Всі типології</option>
+              <option>Пригоди</option>
+              <option>Відпочинок</option>
+              <option>Сім'я</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="vacation-btn">Пошук</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Destinations Section -->
+  <section class="destinations-section">
+    <div class="destinations-header">
+      <p class="destinations-sub">Наступна пригода</p>
+      <h2>Туристичні напрямки<br>Доступно по всьому світу</h2>
+      <p class="destinations-desc">
+        Ми склали список найкращих туристичних напрямків по всьому світу, обшукавши світ
+        у пошуках найпривабливіших і найцікавіших місць для відвідування. Від прекрасних пляжів
+        Карибського басейну до величних гір Європи та жвавих міст Азії,
+        у нашому списку туристичних напрямків кожен знайде щось для себе.
+      </p>
+    </div>
+
+    <div class="destinations-cards">
+      <div class="dest-card" style="background-image: url('images/Greece.jpg');">
+        <div class="overlay">
+          <h3>Греція</h3>
+          <p>Відкрийте для себе стародавню історію та пляжі</p>
+        </div>
+      </div>
+
+      <div class="dest-card" style="background-image: url('images/Egypt.jpg');">
+        <div class="overlay">
+          <h3>Єгипет</h3>
+          <p>Відкрийте для себе країну фараонів і пірамід</p>
+        </div>
+      </div>
+
+      <div class="dest-card" style="background-image: url('images/Africa.jpg');">
+        <div class="overlay">
+          <h3>Африка</h3>
+          <p>Відправляйтеся в подорож на все життя</p>
+        </div>
+      </div>
+
+      <div class="dest-card" style="background-image: url('images/France.jpg');">
+        <div class="overlay">
+          <h3>Франція</h3>
+          <p>Насолоджуйтесь мистецтвом, культурою та кухнею</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="adventure-section">
+    <div class="adventure-container">
+      <div class="adventure-image">
+        <img src="images/Embrance_the_thrill.jpg" alt="Mountains" />
+      </div>
+      <div class="adventure-text">
+        <div class="adventure-sub">Пригодницький туризм</div>
+        <h2 class="adventure-title">Відчуйте гострі відчуття від невідомого</h2>
+        <p class="adventure-desc">
+          Ви втомилися від типових туристичних напрямків? Вийдіть зі своєї зони комфорту!
+Пригодницькі подорожі можуть бути ключем до вирішення цієї проблеми. Ось чотири причини, чому вам варто забронювати пригодницьку подорож вже сьогодні:
+        </p>
+        <ul class="adventure-list">
+          <li>✔ З'єднайся з природою</li>
+          <li>✔ Пізнайте інші культури</li>
+          <li>✔ Створіть незабутні спогади</li>
+        </ul>
+        <button class="adventure-btn">Всі послуги</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Itineraries Section -->
+  <section class="travel-itineraries-section">
+    <div class="travel-itineraries-container">
+      <h2 class="travel-itineraries-main-title">Маршрути подорожей</h2>
+      
+      <div class="travel-itineraries-content">
+        <div class="travel-itineraries-image">
+          <img src="images/travelitern.jpg" alt="Biking adventure">
+        </div>
+        
+        <div class="travel-itineraries-text">
+          <h3 class="travel-itineraries-subtitle"></h3>
+          <p class="travel-itineraries-brand"></p>
+        </div>
+        
+        <div class="orange-texts-container">
+          <div class="orange-images-row">
+            <img src="images/bissfull.png" alt="Blissful">
+            <img src="images/yachtclub.png" alt="Blissful">
+            <img src="images/traveling_loreipsum.png" alt="Traveling">
+            <img src="images/biking_tournament.png" alt="Traveling">
+            <img src="images/travel_world.png" alt="Traveling">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Customer Reviews Section -->
+ <section class="reviews-section">
+  <div class="reviews-container">
+    <div class="reviews-header">
+      <h2 class="reviews-title">Незабутні враження від подорожей</h2>
+      <p class="reviews-description">
+        Відгуки наших клієнтів мають важливе значення для формування чудової репутації та підтримання високої якості обслуговування, що відповідає потребам наших клієнтів. Ми можемо підвищити свою ефективність та забезпечити виняткове враження від подорожі.
+      </p>
+    </div> <!-- ← Цей закриваючий тег був відсутній -->
+
+    <div class="reviews-content">
+      <div class="review-cards">
+        <div class="review-card">
+          <div class="review-text">
+            <p class="review-quote">
+              Мій чоловік і я користуємося послугами цього туристичного агентства вже багато років, і воно ніколи нас не підводило.
+            </p>
+          </div>
+          <div class="review-author">
+            <div class="review-image">
+              <img src="images/Jennifer_and_Mark.jpg" alt="Jennifer and Mark">
+            </div>
+            <div class="review-author-info">
+              <strong>Дженіфер і Марк</strong>
+              <span>Сан Франциско</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-text">
+            <p class="review-quote">
+              Це туристичне агентство втілило в життя мою мрію про подорож до Європи. Вони допомагали мені на кожному етапі планування маршруту.
+            </p>
+          </div>
+          <div class="review-author">
+            <div class="review-image">
+              <img src="images/DylanandEmily.jpg" alt="Dylan and Emily">
+            </div>
+            <div class="review-author-info">
+              <strong>Ділан і Емілі</strong>
+              <span>Маямі</span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- .review-cards -->
+    </div> <!-- .reviews-content -->
+  </div> <!-- .reviews-container -->
+</section>
+  <section class="packages-section">
+  <div class="packages-overlay"></div>
+  <div class="packages-header">
+    <span class="packages-subtitle">Фіксована ціна</span>
+    <h2 class="packages-title">Доступні туристичні пакети</h2>
+    <p class="packages-description">
+      Ми вважаємо, що кожен заслуговує на те, щоб провести відпустку своєї мрії, не витрачаючи при цьому всі свої заощадження. 
+      Саме тому на нашому веб-сайті ми пропонуємо розділ з цінами, де представлено широкий вибір доступних туристичних пакетів.
+    </p>
+  </div>
+
+  <div class="packages-cards">
+    <!-- Card 1 -->
+    <div class="packages-card">
+      <h3 class="packages-card-title">Напівпансіон</h3>
+      <p class="packages-price"><span>$ 50</span> /День</p>
+      <ul class="packages-list">
+        <li>Трансфер з аеропорту</li>
+        <li>Мінімум 3-зірковий готель</li>
+        <li>Алкогольні напої</li>
+        <li>Включно з квитками до музею</li>
+        <li>Харчування в ресторанах</li>
+      </ul>
+      <button class="packages-btn">Переглянути поїздки</button>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="packages-card packages-card-highlight">
+      <h3 class="packages-card-title">Все включено</h3>
+      <p class="packages-price"><span>$ 32</span> /День</p>
+      <ul class="packages-list">
+        <li>Харчування в ресторанах</li>
+        <li>Алкогольні напої</li>
+        <li>Мінімум 3-зірковий готель</li>
+        <li>Трансфер з аеропорту</li>
+        <li>Включно з квитками до музею</li>
+      </ul>
+      <button class="packages-btn dark">Переглянути усе</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="packages-card packages-card-popular">
+      <div class="packages-label">Популярні</div>
+      <h3 class="packages-card-title">Екскурсії включені</h3>
+      <p class="packages-price"><span>$ 68</span> /День</p>
+      <ul class="packages-list">
+        <li>Мінімум 3-зірковий готель</li>
+        <li>Харчування в ресторанах</li>
+        <li>Включно з квитками до музею</li>
+        <li>Харчування в ресторанах</li>
+        <li>Алкогольні напої</li>
+      </ul>
+      <button class="packages-btn">Переглянути усе</button>
+    </div>
+  </div>
+
+  <p class="packages-note">* Усі поїздки включають медичну страховку</p>
+
+  <!-- Discover section-->
+<section class="discover-adventure-section">
+  <div class="discover-adventure-container">
+    <div class="discover-adventure-content">
+      <!-- Додаємо новий заголовок Wandering Souls -->
+      <h3 class="wandering-souls-title">Блукаючі душі</h3>
+      <h2 class="discover-adventure-title">Відкрийте для себе нову пригоду</h2>
+      <p class="discover-adventure-description">
+        Незалежно від того, чи плануєте ви романтичний медовий місяць чи сімейний відпочинок, у нашому розділі цін ви знайдете все, що вам потрібно. Тож почніть переглядати пропозиції вже сьогодні і знайдіть ідеальний пакет відпочинку за ціною, яка не викличе у вас почуття провини.
+      </p>
+      
+      <div class="discover-adventure-options">
+        <div class="discover-option">
+          <h3 class="discover-option-title">Організована групова екскурсія</h3>
+          <div class="discover-divider"></div>
+        </div>
+        
+        <div class="discover-option">
+          <h3 class="discover-option-title discover-option-emphasis">Одноразова індивідуальна поїздка</h3>
+          <div class="discover-divider"></div>
+        </div>
+      </div>
+      
+      <button class="discover-adventure-btn">Більше інформації</button>
+    </div>
+    
+    <div class="discover-adventure-image">
+      <img src="images/discoveryouradventure.jpg" alt="discover-adventure-image">
+    </div>
+  </div>
+</section>
+
+<!-- ===== Travel Blog Section ===== -->
+<section class="travel-blog">
+    <p class="travel-blog__desc">
+    </p>
+  </div>
+  <div class="travel-blog__content">
+    <!-- Main featured article -->
+    <div class="travel-blog__main-article">
+      <div class="travel-blog__main-img"></div>
+      <div class="travel-blog__main-text">  
+        <p class="travel-blog__main-desc">
+          
+        </p>
+      </div>
+    </div>
+
+    <!-- Side articles -->
+  <section class="tb-section">
+  <div class="tb-header">
+    <p class="tb-sub">Роумінг Тайлз</p>
+    <h1 class="tb-title">Блог про подорожі</h1>
+<h1 class="tb-share">
+  Ми ділимося своїм досвідом, порадами та історіями про подорожі, щоб надихати та допомагати нашим читачам у їхніх власних
+  мандрівних пригодах. Від прихованих перлин до популярних напрямків, ми демонструємо красу та
+  різноманітність світу і пропагуємо відповідальне та стале подорожування.
+</h1>
+    <p class="tb-desc">
+    
+    </p>
+  </div>
+
+  <div class="tb-content">
+    <!-- MAIN ARTICLE -->
+    <article class="tb-main">
+      <div class="tb-main-img">
+        <!-- Постав свою картинку сюди або залишити пустою для placeholder -->
+        <img class="tb-img" src="images/travelblog.jpg" alt="Main feature image">
+      </div>
+
+      <div class="tb-main-text">
+        <span class="tb-badge">Квітень 7, 2023</span>
+        <h2 class="tb-main-title">Сплануйте ідеальний відпочинок</h2>
+        <p class="tb-main-p">
+          Планування відпустки може бути складним завданням, але ця стаття пропонує покроковий
+посібник, який допоможе читачам скласти детальний план подорожі. Від вибору
+місця призначення до бронювання житла та розваг — читачі дізнаються, як
+спланувати безтурботну та приємну подорож.
+        </p>
+        <a class="tb-btn" href="#">Читати більше</a>
+      </div>
+    </article>
+
+    <!-- SIDE LIST (cards) -->
+    <aside class="tb-side">
+      <article class="tb-card">
+        <div class="tb-card-img">
+          <img class="tb-img" src="images/discover_the_hidden.jpg" alt="Discover the Hidden Gems">
+        </div>
+        <div class="tb-card-body">
+          <span class="tb-badge">Квітень 7, 2023</span>
+          <h3 class="tb-card-title">Відкрийте для себе приховані скарби</h3>
+          <p class="tb-card-desc">Переваги подорожей наодинці: свобода відкривати нові місця з новими друзями.</p>
+        </div>
+      </article>
+
+      <article class="tb-card">
+        <div class="tb-card-img">
+          <img class="tb-img" src="images/must_see_landmarks.jpg" alt="Must-See Landmarks">
+        </div>
+        <div class="tb-card-body">
+          <span class="tb-badge">Квітень 7, 2023</span>
+          <h3 class="tb-card-title">Визначні пам'ятки, які варто побачити</h3>
+          <p class="tb-card-desc">Знакові пам'ятки, які роблять Європу одним з найпопулярніших туристичних напрямків у світі.</p>
+        </div>
+      </article>
+
+      <article class="tb-card">
+        <div class="tb-card-img">
+          <img class="tb-img" src="images/travelingonabudget.jpg" alt="Traveling on a Budget">
+        </div>
+        <div class="tb-card-body">
+          <span class="tb-badge">Квітень 7, 2023</span>
+          <h3 class="tb-card-title">Подорожі з обмеженим бюджетом</h3>
+          <p class="tb-card-desc">Практичні поради для мандрівників, які хочуть побачити світ, не витрачаючи великих коштів.</p>
+        </div>
+      </article>
+
+      <article class="tb-card">
+        <div class="tb-card-img">
+          <img class="tb-img" src="images/explore_the_wonders.jpg" alt="Explore the Wonders">
+        </div>
+        <div class="tb-card-body">
+          <span class="tb-badge">Квітень 7, 2023</span>
+          <h3 class="tb-card-title">Досліджуйте дива</h3>
+          <p class="tb-card-desc">Необхідно побачити місця та пережити враження, включаючи дику природу та культурні враження.</p>
+        </div>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<footer class="travel-footer">
+  <div class="footer__inner">
+    
+    <h2 class="footer__title">
+      <span class="accent"></span>
+    </h2>
+
+<div class="footer__grid">
+  <!-- Ліва колонка -->
+  <h2 class="footer__title">
+    Подорожуйте за межі своєї уяви, <br>
+    з нашим <span class="accent">Туристичне агентство!</span>
+  </h2>
+
+  <!-- Права колонка -->
+  <div class="footer__info">
+    <!-- Адреса -->
+    <div class="footer__col">
+      <h3 class="footer__heading">Адреса</h3>
+      <p class="footer__address">
+        1080 Брікелл-авеню<br>
+        Маямі – Флорида<br>
+        Сполучені Штати Америки
+      </p>
+      <ul class="socials">
+        <li><a href="#"><img src="images/facebook.png" alt="Facebook"></a></li>
+        <li><a href="#"><img src="images/twitter.png" alt="Twitter"></a></li>
+        <li><a href="#"><img src="images/youtube.png" alt="YouTube"></a></li>
+      </ul>
+    </div>
+
+    <!-- Контакти -->
+    <div class="footer__col">
+      <h3 class="footer__heading">Контакти</h3>
+      <a href="mailto:info@travel.com" class="btn-mail">info@travel.com</a>
+      <p><a href="tel:+01483593284" class="footer__phone">+01 483 593 284</a></p>
+    </div>
+  </div>
+</div>
+
+    <!-- Bottom -->
+    <div class="footer__bottom">
+      <div class="footer__links">
+        <a href="#">Тема ВордПресс для подорожей</a>
+        <span class="dot">•</span>
+        <a href="#">Оренда</a>
+        <span class="dot">•</span>
+        <a href="#">Страхування</a>
+      </div>
+      <div class="payments">
+        <img src="images/visa.png" alt="Visa">
+        <img src="images/sigma.png" alt="Stripe">
+        <img src="images/paypal.png" alt="Paypal">
+        <img src="images/mastercard.png" alt="Mastercard">
+      </div>
+    </div>
+  </div>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>
+

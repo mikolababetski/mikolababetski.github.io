@@ -1,0 +1,2867 @@
+body {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(90deg, #e0e0e0, #bdbdbd);
+}
+main {
+  flex: 1;  /* займає весь вільний простір між header і footer */
+}
+
+/* Header */
+.hero {
+  position: relative; /* щоб header міг лежати поверх */
+  height: 100vh; 
+  background-image: url("images/up_background.jpg"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: absolute; /* поверх фонового зображення */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+
+
+.hero, .main-banner, header {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  height: 35px;
+}
+
+.nav-desktop ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-desktop a {
+  text-decoration: none;
+  color:white;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-desktop a:hover {
+  color: orangered;
+}
+
+/* === СОЦІАЛЬНІ ІКОНКИ === */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+
+.social-icons a:hover {
+  color: #00bcd4;
+}
+@media (max-width: 900px) {
+  .social-icons {
+    display: none; /* ❌ приховуємо соцмережі на мобільних */
+  }
+}
+/* ===== Модальне вікно ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.modal-content button {
+  width: 100%;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #666;
+}
+
+.close:hover {
+  color: #000;
+}
+
+/* ===== Адаптивність ===== */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+/* === МОБІЛЬНЕ МЕНЮ === */
+.burger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+/* === ВИПАДНЕ МЕНЮ (Мобільне) === */
+.nav {
+  display: none;
+}
+
+.nav.active {
+  display: block;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
+
+.nav li {
+  margin: 15px 0;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #00bcd4;
+}
+
+/* === АДАПТИВНІСТЬ === */
+@media (max-width: 900px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}
+.nav.active ~ .burger #openIcon {
+  display: none;
+}
+
+.nav.active ~ .burger #closeIcon {
+  display: inline-block;
+}
+
+/* мобільна версія */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* щоб не перекривався */
+    cursor: pointer;
+  }
+}
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;   /* спочатку повністю сховане */
+    height: 100%;  /* висота дорівнює висоті екрана */
+    width: 250px;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  .nav.active {
+    right: 0; /* показати меню */
+  }
+
+  /* коли меню відкрите – показати хрестик */
+  .nav.active ~ .burger #openIcon {
+    display: none;
+  }
+
+  .nav.active ~ .burger #closeIcon {
+    display: inline-block;
+  }
+
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+    flex-direction: column; /* якщо елементи всередині — вертикально */
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo img {
+    max-height: 40px;
+  }
+  
+}
+@media (max-width: 768px) {
+  .logo img {
+    max-width: 150px;
+    height: auto;
+  }
+}
+
+
+/* === PRELOADER === */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000; /* темний фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-content {
+  text-align: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.loader-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Коли прелоадер зникає */
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-content h1 {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.hero-content h1 .snow {
+  font-size: 48px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0px #FD661E;
+  display: block;
+}
+
+.hero-content h1 .adventure {
+  font-size: 32px;
+  line-height: 1;
+  color: #1E92FD;
+  text-shadow: 1px 1px 0px #FFFFFF;
+  display: block;
+}
+
+.hero-content p {
+  margin: 15px 0;
+  font-size: 14px;
+  color: white;
+}
+
+.search-box {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-box .select {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.search-box label {
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+}
+
+.search-box label::before {
+  content: "\f3c5"; /* FA map-marker-alt */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #FD661E;
+}
+
+.search-box select {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #777;
+  background: transparent;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.search-btn {
+  background: #FD661E;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+.search-btn:hover {
+  background: #e65512;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-image .image-box {
+  background: none;
+  padding: 0;
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+
+/* ---------- TABLETS: 481px — 768px ---------- */
+@media (min-width: 481px) {
+  .hero {
+    padding: 30px;
+  }
+
+  .hero-content h1 .snow {
+    font-size: 64px;
+  }
+
+  .hero-content h1 .adventure {
+    font-size: 42px;
+  }
+
+  .search-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .search-box .select {
+    flex: 1;
+  }
+
+  .search-btn {
+    max-width: 150px;
+    padding: 12px;
+    margin-left: 10px;
+  }
+
+  .hero-image .image-box {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+
+/* ---------- SMALL LAPTOPS: 769px — 1024px ---------- */
+@media (min-width: 769px) {
+  .hero {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 40px;
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 500px;
+  }
+
+  .hero-content h1 .snow {
+    font-size: 80px;
+  }
+
+  .hero-content h1 .adventure {
+    font-size: 60px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .search-box {
+    max-width: 500px;
+  }
+
+  .hero-image {
+    max-width: 500px;
+  }
+
+  .hero-image .image-box {
+    max-width: 100%;
+  }
+}
+
+
+/* ---------- DESKTOPS: 1025px — 1200px ---------- */
+@media (min-width: 1025px) {
+  .hero-content h1 .snow {
+    font-size: 100px;
+  }
+
+  .hero-content h1 .adventure {
+    font-size: 72px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .search-btn {
+    font-size: 16px;
+  }
+}
+
+
+/* ---------- EXTRA LARGE SCREENS: 1201px+ ---------- */
+@media (min-width: 1201px) {
+  .hero {
+    padding: 80px;
+  }
+
+  .hero-content h1 .snow {
+    font-size: 111px;
+  }
+
+  .hero-content h1 .adventure {
+    font-size: 80px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+
+  .search-box {
+    padding: 20px 30px;
+  }
+
+  .hero-image {
+    max-width: 600px;
+  }
+}
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav.active {
+    display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-image: url('images/up_background.jpg');
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 12px 0;
+    width: 100%;
+    background: transparent;  /* ❌ Прибери білий фон тут */
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  nav ul li a:hover {
+    background: #f2f2f2;
+    color: #FD661E;
+  }
+
+  /* Прибрати двокрапки на мобілці */
+  nav ul li::after {
+    display: none;
+  }
+}
+.menu-btn {
+  background: transparent;   /* прибираємо білий фон */
+  width: 100%;
+  border: none;              /* прибираємо рамку */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15px;   /* ширина кнопки */
+  height: 15px;  /* висота кнопки */
+  padding: 0;
+  margin-left: 1px; /* відступ від іконок */
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;             /* товщина лінії */
+  width: 100%;
+  background-color: white;  /* колір ліній (можеш змінити на білий/оранжевий) */
+  border-radius: 2px;
+}
+
+/* Floating Buttons */
+
+.floating-buttons {
+  position: absolute;
+  bottom: 20px; /* Підняти на 20px від низу */
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #0000; /* Колір фону, як на скріншоті */
+}
+.floating-buttons .btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+.floating-buttons .blue {
+  background: #007bff;
+  
+}
+.floating-buttons .orange {
+  background: #FD661E;
+}
+
+/* Базові стилі (мобільна версія) */
+
+.trip-info {
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  background-color: white;
+  background-size: cover;
+  border-radius: 0pxpx; /* якщо хочеш закруглені краї */
+  color: white; /* щоб текст не губився */
+}
+
+.container-trip {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.trip-sub {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 28px;       /* підбери розмір */
+  font-weight: 400;      /* цей шрифт зазвичай один стиль */
+  color: #FD661E;
+  margin-bottom: 5px;
+}
+
+.trip-info h2 {
+  font-size: 30px;
+  font-weight: 800;   /* робить жирним */
+  margin: 10px 0;
+  color: #181D4E;     /* темний синьо-фіолетовий відтінок */
+}
+
+
+
+.trip-text {
+  color: #555;
+  margin: 10px 0 20px; /* прибрав auto, щоб текст вирівнювався по лівому краю */
+  font-size: 14px;
+  max-width: 600px; /* зробив трохи ширше */
+}
+
+.more-btn {
+  background: #FD661E;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 0 30px 0; /* кнопка під текстом зліва */
+  display: inline-block; /* щоб не розтягувалася */
+}
+
+
+/* Кольорові картки */
+.trip-buttons {
+  display: grid;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+.trip-card {
+  height: 80px; 
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 100px;
+}
+.trip-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.trip-card .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 15px;
+}
+.trip-card.orange .overlay {
+  background: linear-gradient(to right, rgba(253,102,30,0) 0%, transparent); /* було 0.9 і 50% */
+}
+.trip-card.blue .overlay {
+  background: linear-gradient(to right, rgba(30,146,253,0) 0%, transparent); /* було 0.9 і 50% */
+}
+
+
+/* Картки турів */
+.trip-list {
+  display: grid;
+  gap: 20px;
+}
+
+.tour-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative; /* щоб можна було абсолютно позиціонувати панельку */
+}
+
+.tour-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* верхня панель під фото */
+.tour-top {
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 10px auto; /* трішки нижче */
+  width: 85%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.tour-top span {
+  font-size: 13px;
+  color: #FD661E;
+  font-weight: 600;
+}
+
+.tour-top .icons i {
+  margin-left: 6px;
+  color: orangered;
+  font-size: 14px;
+}
+
+
+/* блок з інфо */
+.tour-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.tour-info h3 {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 700;  /* щоб був жирний */
+  color: #181D4E;    /* темний як у макеті */
+}
+
+.country {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.desc {
+  font-size: 13px;
+  margin: 10px 0 20px;
+  color: #555;
+  line-height: 1.4;
+  border-top: 1px solid #eee; /* сіра лінія як роздільник */
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+/* низ картки */
+.tour-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.details-btn {
+  background: #FD661E;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.details-btn.blue {
+  background:#1E92FD;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 14px;
+  color: #181D4E;
+}
+
+.price span {
+  font-size: 18px;
+  color: black;
+}
+
+.price del {
+  color: #999;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+
+/* -------- Media Queries -------- */
+
+/* планшет */
+@media (min-width: 768px) {
+  .trip-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .trip-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* десктоп */
+@media (min-width: 1200px) {
+  .trip-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* --- Vacation Section --- */
+/* --- Vacation Section з фоном --- */
+.vacation-section {
+  background: url("images/snowflake.jpg") no-repeat center/cover;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  border-radius: 0px; /* щоб виглядало гарно, можна прибрати */
+    width: 100%;
+}
+
+.vacation-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, -2); /* чорний прозорий шар для затемнення */
+  z-index: 1;
+  border-radius: inherit;
+}
+
+
+.vacation-content {
+  position: relative;
+  z-index: 2; /* піднімає текст і форму над фоном */
+}
+
+.vacation-sub {
+  color: #FD661E;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: 'Shadows Into Light', cursive;
+}
+
+.vacation-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #181D4E;
+}
+
+.vacation-title span {
+  color: black;
+}
+
+.vacation-desc {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Mobile-first */
+.vacation-search {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.vacation-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #eee;
+  padding: 12px 15px;
+  border-radius: 10px;
+  text-align: left; /* Додано вирівнювання по лівому краю */
+}
+
+.vacation-item i {
+  font-size: 18px;
+  color: #1E92FD;
+  text-align: left; /* Вирівнювання іконки по лівому краю */
+}
+
+.vacation-item label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #181D4E;
+  text-align: left; /* Вирівнювання мітки по лівому краю */
+  width: auto; /* Дозволяє мітці займати потрібну ширину */
+  margin-right: 10px; /* Відступ після мітки */
+}
+
+.vacation-item input,
+.vacation-item select {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #777;
+  width: 100%;
+  text-align: left; /* Вирівнювання тексту вводу по лівому краю */
+}
+
+.vacation-btn {
+  background: #FD661E;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  text-align: center; /* Кнопка залишається по центру */
+}
+.vacation-btn:hover {
+  background: #e65512;
+}
+
+/* --- Media Queries --- */
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .vacation-title {
+    font-size: 34px;
+  }
+
+  .vacation-search {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .vacation-item {
+    flex: 1 1 45%;
+    min-width: 250px;
+  }
+
+  .vacation-btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* Desktops */
+@media (min-width: 1025px) {
+  .vacation-title {
+    font-size: 40px;
+  }
+
+  .vacation-desc {
+    max-width: 700px;
+  }
+
+  .vacation-search {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .vacation-btn {
+    align-self: center;
+    justify-self: end;
+    padding: 15px 30px;
+  }
+}
+
+/* === Travel Destinations Section === */
+.destinations-section { 
+  padding: 60px 20px;
+  width: 100%;
+  margin: auto; /* центрує тільки сам контент секції */
+  font-family: Arial, sans-serif;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+    width: 100%;
+
+}
+
+.destinations-header {
+  max-width: 700px;
+}
+
+.destinations-sub {
+  color: orangered;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Reenie Beanie', cursive;
+}
+
+.destinations-header h2 {
+  font-size: 32px;
+  font-weight: 800px;
+  color: #0d1b3e;
+  margin-bottom: 20px;
+}
+
+.destinations-desc {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.destinations-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px; /* було 10px */
+  margin-top: 10px; /* було 40px */
+  align-items: start;
+}
+
+.destinations-image img {
+  width: 100%;
+  max-width: 200px;
+}
+
+.destinations-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* адаптивна сітка */
+  gap: 20px; /* рівні відступи */
+}
+/* ВИПРАВЛЕННЯ: Змінено стилі для карток */
+.dest-card {
+  position: relative;
+  border-radius: 12px;
+  /* width: 200px;  <- прибираємо */
+  height: 350px; /* можна залишити */
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+}
+
+/* ВИПРАВЛЕННЯ: Новий стиль для контейнера зображення */
+.image-card {
+  position: relative;
+  aspect-ratio: 3 / 4; /* співвідношення сторін (міняй під себе: 4/3, 16/9 тощо) */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+
+/* ВИПРАВЛЕННЯ: Стиль для самого зображення */
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* картинка обрізається, але не розтягується */
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+/* Ефект при наведенні */
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+.dest-card-text {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  text-align: left;
+  z-index: 2;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 15px;
+  border-radius: 0 0 12px 12px;
+  width: calc(100% - 30px);
+}
+
+/* Додатковий затемнюючий шар для кращої читабельності тексту */
+.image-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  border-radius: 0 0 12px 12px;
+  z-index: 1;
+}
+
+/* === Responsive Breakpoints === */
+
+/* Mobile (320px–480px) */
+@media (max-width: 480px) {
+  .destinations-content {
+    grid-template-columns: 1fr;
+  }
+  .destinations-cards {
+    grid-template-columns: 1fr;
+  }
+  .image-card, .dest-card {
+    height: 280px; /* Менша висота на мобільних */
+  }
+}
+
+/* Tablets (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .destinations-content {
+    grid-template-columns: 1fr;
+  }
+  .destinations-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screens, laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .destinations-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktops (1025px–1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .destinations-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra large screens (1201px and more) */
+@media (min-width: 1201px) {
+  .destinations-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Adventure section */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+/* MOBILE FIRST – 320px and up */
+.adventure-section {
+  background-image: url(images/Embrance_the_thrill.jpg);
+  padding: 30px 15px;
+  position: relative;
+}
+
+.adventure-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.adventure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  width: 100%;
+}
+
+.adventure-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.adventure-text {
+  color: white;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.adventure-sub {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.adventure-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.adventure-desc {
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.adventure-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.adventure-list li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 8px;
+}
+
+.adventure-btn {
+  background-color: orangered;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* TABLETS – 481px–768px */
+@media (min-width: 481px) {
+  .adventure-title {
+    font-size: 28px;
+  }
+
+  .adventure-desc,
+  .adventure-list li {
+    font-size: 15px;
+  }
+}
+
+/* SMALL LAPTOPS – 769px–1024px */
+@media (min-width: 769px) {
+  .adventure-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+  }
+
+  .adventure-text {
+    max-width: 50%;
+    text-align: left;
+  }
+
+  .adventure-image {
+    max-width: 45%;
+  }
+
+  .adventure-title {
+    font-size: 32px;
+  }
+}
+
+/* DESKTOPS – 1025px–1200px */
+@media (min-width: 1025px) {
+  .adventure-title {
+    font-size: 36px;
+  }
+
+  .adventure-desc {
+    font-size: 16px;
+  }
+}
+
+/* XL SCREENS – 1201px+ */
+@media (min-width: 1201px) {
+  .adventure-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .adventure-title {
+    font-size: 40px;
+  }
+}
+/* Itineraries Section */
+/* Travel Itineraries Section */
+.travel-itineraries-section {
+  width: 100%;
+  padding: 100px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.travel-itineraries-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.travel-itineraries-main-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 70px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.travel-itineraries-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.travel-itineraries-image {
+  width: 1000px;
+  height: 400px;
+  overflow: hidden;
+  /* Без закруглень */
+}
+
+.travel-itineraries-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.travel-itineraries-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.travel-itineraries-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.travel-itineraries-brand {
+  font-family: 'Jost', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #181D4E;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.orange-texts-container {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.orange-images-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.orange-images-row img {
+  height: 60px; /* Регулюйте висоту за потребою */
+  width: auto;
+  max-width: 200px;
+}
+
+/* Адаптивність */
+@media (max-width: 1024px) {
+  .travel-itineraries-main-title {
+    font-size: 50px;
+  }
+  
+  .travel-itineraries-image {
+    width: 450px;
+    height: 450px;
+  }
+  
+  .orange-images-row img {
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .travel-itineraries-section {
+    padding: 80px 20px;
+  }
+  
+  .travel-itineraries-main-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+  
+  .travel-itineraries-image {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .travel-itineraries-subtitle {
+    font-size: 36px;
+  }
+  
+  .travel-itineraries-brand {
+    font-size: 40px;
+  }
+  
+  .orange-images-row {
+    gap: 15px;
+  }
+  
+  .orange-images-row img {
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .travel-itineraries-section {
+    padding: 60px 15px;
+  }
+  
+  .travel-itineraries-main-title {
+    font-size: 32px;
+  }
+  
+  .travel-itineraries-image {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .travel-itineraries-subtitle {
+    font-size: 28px;
+  }
+  
+  .travel-itineraries-brand {
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+  
+  .orange-images-row {
+    gap: 10px;
+  }
+  
+  .orange-images-row img {
+    height: 35px;
+  }
+}
+/* Reviews Section */
+.reviews-section {
+  width: 100%;
+  padding: 100px 20px;
+  background-image: url('images/Unforgettable_travel.jpg'); /* Фонове зображення */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+}
+
+
+.reviews-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Затемнення для кращої читабельності */
+  z-index: 1;
+}
+
+.reviews-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.reviews-header {
+  text-align: left;
+  margin-bottom: 70px;
+  max-width: 800px;
+  margin-left: 0;
+  margin-right: auto;
+  
+}
+
+.reviews-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+
+.reviews-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  
+}
+
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+  
+}
+
+.review-card {
+  background: #1a73e8;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* текст зверху, автор знизу */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  
+}
+
+
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.review-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fff;
+  flex-shrink: 0;
+}
+
+.review-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.review-image-placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: #1a73e8; /* Синій колір */
+  margin-bottom: 20px;
+  border-radius: 8px; /* Можна змінити на 0 для квадрата */
+}
+
+.review-text {
+   flex-grow: 1;
+  text-align: left; /* вирівнювання ліворуч */
+  margin-bottom: 20px;
+}
+
+.review-quote {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: normal; /* прибираємо курсив */
+  quotes: none;       /* прибираємо лапки */
+  color: #fff;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* менший відступ між фото і текстом */
+  margin-top: auto;
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column; /* щоб ім’я і місто були підряд */
+  line-height: 1.2;
+}
+
+.review-author-info strong {
+  font-size: 16px;
+  color: #fff;
+}
+
+.review-author-info span {
+  font-size: 14px;
+  color: #e0e0e0;
+}
+/* Адаптивність */
+@media (max-width: 1024px) {
+  .reviews-title {
+    font-size: 42px;
+  }
+  
+  .review-cards {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 80px 20px;
+  }
+  
+  .reviews-title {
+    font-size: 36px;
+  }
+  
+  .reviews-description {
+    font-size: 16px;
+  }
+  
+  .review-cards {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 50px auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-section {
+    padding: 60px 15px;
+  }
+  
+  .reviews-title {
+    font-size: 32px;
+  }
+  
+  .review-card {
+    padding: 20px;
+  }
+  
+  .review-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* === Travel Packages Section === */
+/* === Travel Packages Section === */
+.packages-section {
+  position: relative;
+  padding: 0px 0px;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+.packages-overlay {
+   display: none;
+}
+
+.packages-header,
+.packages-cards,
+.packages-note {
+  position: center;
+  z-index: 2;
+}
+
+.packages-header {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  text-align: center;
+  color: #181D4E;
+
+}
+.packages-header p {
+  font-size: 16px;   /* розмір шрифту */
+  color: #6E6E6E;       /* колір тексту */
+  text-align: left;  /* вирівнювання */
+  justify-content: center;
+  text-align: center;
+}
+
+.packages-subtitle {
+  font-family: 'Reenie Beanie', cursive; /* 🔹 новий шрифт */
+  color: #ff6600;
+  font-size: 24px;  /* можна збільшити, бо цей шрифт дрібний */
+  display: block;
+  margin-bottom: 10px;
+}
+
+.packages-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.packages-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Cards layout */
+.packages-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  
+}
+
+.packages-card {
+  background: #f5f7fa;
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  color: #14213d;
+  flex: 1;
+}
+
+.packages-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  
+}
+
+.packages-price {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.packages-price span {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.packages-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px;
+}
+
+.packages-list li {
+  margin: 8px 0;
+}
+
+.packages-btn {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.packages-note {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #6E6E6E;
+  text-align: center;   /* 🔹 вирівнювання по центру */
+}
+.packages-btn:hover {
+  background: #e65c00;
+}
+
+.packages-btn.dark {
+  background: #14213d;
+}
+
+.packages-btn.dark:hover {
+  background: #000;
+}
+
+/* Highlighted and Popular cards */
+.packages-card-highlight {
+  background: #ff6600;
+  color: #fff;
+} 
+
+.packages-card-popular {
+  background: #14213d;
+  color: #fff;
+}
+
+.packages-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff6600;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.packages-note {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+/* === Responsive === */
+@media (min-width: 769px) {
+  .packages-cards {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .packages-card {
+    flex: 1 1 30%;
+  }
+}
+
+/* Discover Section Styles */
+/* Додаємо шрифт Reenie Beanie */
+/* Додаємо шрифт Reenie Beanie */
+/* =================================== */
+/* ЗАГАЛЬНІ СТИЛІ КАРТОК (Десктоп) */
+/* =================================== */
+.packages-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    flex-wrap: wrap; 
+    margin: 50px 0;
+}
+
+.packages-card {
+    /* Розміри та розташування */
+    flex-basis: 300px; 
+    flex-grow: 1; 
+    max-width: 350px;
+    
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Налаштування для виділеної картки */
+.packages-card-highlight {
+    /* Для розташування залишаємо трансформацію, якщо ви плануєте її використовувати */
+    transform: scale(1.05); 
+}
+
+/* Налаштування для популярної картки */
+.packages-label {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    /* Видалено background-color, color */
+    padding: 5px 30px;
+    font-weight: bold;
+    font-size: 14px;
+    transform: rotate(45deg);
+    width: 150px;
+}
+
+/* Скидання стилів для елементів */
+.packages-card-title {
+    margin-bottom: 10px;
+}
+.packages-price {
+    margin-bottom: 25px;
+}
+.packages-price span {
+    display: block;
+}
+.packages-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+.packages-list li {
+    padding: 10px 0;
+}
+
+/* Кнопка */
+.packages-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid; /* Залишаємо межу, але без кольору */
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.packages-note {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* =================================== */
+/* МОБІЛЬНА АДАПТАЦІЯ (max-width: 768px) */
+/* =================================== */
+@media (max-width: 768px) {
+    .packages-cards {
+        flex-direction: column; 
+        gap: 25px; 
+        padding: 0 20px; 
+    }
+
+    .packages-card {
+        max-width: 100%; 
+        flex-basis: auto; 
+        margin: 0 auto; 
+        padding: 25px 20px; 
+    }
+    
+    /* Скасовуємо трансформацію для виділеної картки на мобільному */
+    .packages-card-highlight {
+        transform: scale(1);
+    }
+
+    .packages-btn {
+        width: 100%; 
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+
+/* Discover Adventure Section Styles */
+.discover-adventure-section {
+  padding: 40px 0;
+  background-color: #ffffff;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  font-family: 'Jost', sans-serif;
+}
+
+/* Стилі для заголовка Wandering Souls */
+.wandering-souls-title {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 16px;
+  color: #FD661E;
+  margin-bottom: 10px;
+  font-weight: 300;
+  text-align: left;
+}
+
+.discover-adventure-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.discover-adventure-content {
+  text-align: left;
+}
+
+.discover-adventure-title {
+  font-size: 24px;
+  color: #1a3e6a;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.2;
+  font-family: 'Reenie Beanie', cursive; /* Додаємо шрифт Reenie Beanie */
+}
+
+.discover-adventure-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6E6E6E;
+  margin-bottom: 25px;
+  text-align: left;
+    font-family: 'Poppins', cursive; /* Додаємо шрифт Reenie Beanie */
+}
+
+.discover-adventure-options {
+  margin-bottom: 25px;
+}
+
+.discover-option {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.discover-option-title {
+  font-size: 16px;
+  color: #6E6E6E;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-family: 'Poppins', cursive; /* Додаємо шрифт Reenie Beanie */
+}
+
+/* Додаємо роздільник --- */
+.discover-divider {
+  height: 2px;
+  background-color: #1E92FD;
+  width: 350px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.discover-option-emphasis {
+  color: #6E6E6E;
+  font-weight: 700;
+}
+
+.discover-adventure-btn {
+  background-color: orangered;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: 700; /* Робимо напис жирним */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase; /* Робимо текст великими літерами */
+}
+
+.discover-adventure-btn:hover {
+  background-color: #ff7f50;
+}
+
+.discover-adventure-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.discover-adventure-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Прибираємо span з текстом "Image" */
+.discover-adventure-image span {
+  display: none;
+}
+
+
+/* Адаптивність для нового заголовка */
+@media (min-width: 481px) {
+  .wandering-souls-title {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 769px) {
+  .wandering-souls-title {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .wandering-souls-title {
+    font-size: 44px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .wandering-souls-title {
+    font-size: 48px;
+  }
+}
+
+/* Tablet styles (481px—768px) */
+@media (min-width: 481px) {
+  .discover-adventure-section {
+    padding: 50px 0;
+  }
+  
+  .discover-adventure-container {
+    padding: 0 30px;
+  }
+  
+  .discover-adventure-title {
+    font-size: 32px;
+  }
+  
+  .discover-adventure-description {
+    font-size: 15px;
+  }
+  
+  .discover-option-title {
+    font-size: 17px;
+  }
+  
+  .discover-adventure-image img {
+    max-height: 350px;
+  }
+}
+
+/* Small screens, laptops (769px—1024px) */
+@media (min-width: 769px) {
+  .discover-adventure-section {
+    padding: 60px 0;
+  }
+  
+  .discover-adventure-container {
+    padding: 0 40px;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .discover-adventure-content {
+    flex: 1;
+  }
+  
+  .discover-adventure-image {
+    flex: 1;
+  }
+  
+  .discover-adventure-title {
+    font-size: 36px;
+  }
+  
+  .discover-adventure-image img {
+    max-height: 400px;
+  }
+}
+
+/* Desktops, large screens (1025px—1200px) */
+@media (min-width: 1025px) {
+  .discover-adventure-container {
+    padding: 0 20px;
+  }
+  
+  .discover-adventure-title {
+    font-size: 40px;
+  }
+  
+  .discover-adventure-description {
+    font-size: 16px;
+  }
+  
+  .discover-option-title {
+    font-size: 18px;
+  }
+  
+  .discover-adventure-image img {
+    max-height: 450px;
+  }
+}
+
+/* Extra large screens (1201px and more) */
+@media (min-width: 1201px) {
+  .discover-adventure-container {
+    max-width: 1300px;
+    gap: 60px;
+  }
+  
+  .discover-adventure-image img {
+    max-height: 500px;
+  }
+}
+/* ===== Travel Blog Styles ===== */
+/* ================= mobile-first styles (unique names tb-*) ================= */
+.tb-section {
+  font-family: "Arial", sans-serif;
+  padding: 18px;
+  max-width: 1300px;
+  margin: 0 auto;
+  color: #333;
+  background: #fff; /* Додай сюди білий фон */
+}
+
+
+.tb-sub {
+  text-align: center;
+  color: #ff7a2b;
+  font-weight: 700;
+  margin: 0 0 6px;
+  font-size: 30px;
+  font-family: 'Reenie Beanie', cursive; /* Додаємо шрифт Reenie Beanie */
+}
+
+.tb-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0 0 8px;
+  color: #181D4E;
+}
+.tb-share {
+  font-size: 14px;        /* дрібний текст */
+  font-weight: 400;       /* не жирний */
+  color: #666666;         /* сірий відтінок */
+  text-align: center;     /* по центру */
+  line-height: 1.6;       /* зручне міжряддя */
+  max-width: 700px;       /* обмеження ширини для гарного вигляду */
+  margin: 0 auto;         /* центрування по горизонталі */
+}
+.tb-desc {
+  text-align: center;
+  color: #6b6b6b;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: 0.95rem;
+}
+
+/* layout */
+.tb-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* MAIN article (stacked on mobile) */
+.tb-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tb-main-img {
+  width: 90%;
+  aspect-ratio: 16 / 9;
+  background: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tb-main-img .tb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tb-main-text .tb-badge {
+  display: inline-block;
+  background: #1D1D54;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+}
+
+.tb-main-title {
+  margin: 6px 0 8px;
+  color: #10223a;
+  font-size: 1.25rem;
+}
+
+.tb-main-p {
+  color: #555;
+  line-height: 1.4;
+  margin: 0 0 8px;
+}
+
+.tb-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: #1e88ff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+/* SIDE list cards: image on left, text on right */
+.tb-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* one row card */
+.tb-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* IMAGE (small) - reduced by default for mobile */
+.tb-card-img {
+  width: 64px;
+  aspect-ratio: 3 / 2;
+  border-radius: 6px;
+  overflow: hidden;
+  flex: 0 0 64px;
+  background: #f6f6f6;
+}
+
+.tb-card-img .tb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TEXT content next to image */
+.tb-card-body {
+  flex: 1;
+}
+
+.tb-card-body .tb-badge {
+  display: inline-block;
+  background: #ff7a2b;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.tb-card-title {
+  margin: 6px 0 6px;
+  color: #10223a;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.tb-card-desc {
+  margin: 0;
+  color: #6b6b6b;
+  font-size: 0.93rem;
+  line-height: 1.4;
+}
+.packages-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    flex-wrap: wrap; 
+    margin: 50px 0;
+}
+
+.packages-card {
+    /* Розміри та розташування */
+    flex-basis: 300px; 
+    flex-grow: 1; 
+    max-width: 350px;
+    
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Налаштування для виділеної картки */
+.packages-card-highlight {
+    /* Для розташування залишаємо трансформацію, якщо ви плануєте її використовувати */
+    transform: scale(1.05); 
+}
+
+/* Налаштування для популярної картки */
+.packages-label {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    /* Видалено background-color, color */
+    padding: 5px 30px;
+    font-weight: bold;
+    font-size: 14px;
+    transform: rotate(45deg);
+    width: 150px;
+}
+
+/* Скидання стилів для елементів */
+.packages-card-title {
+    margin-bottom: 10px;
+}
+.packages-price {
+    margin-bottom: 25px;
+}
+.packages-price span {
+    display: block;
+}
+.packages-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+.packages-list li {
+    padding: 10px 0;
+}
+
+/* Кнопка */
+.packages-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid; /* Залишаємо межу, але без кольору */
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.packages-note {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* =================================== */
+/* МОБІЛЬНА АДАПТАЦІЯ (max-width: 768px) */
+/* =================================== */
+
+/* ===================== Breakpoints (user requested) ===================== */
+/* a) Mobile devices – 320px—480px  (base covers these) */
+/* b) iPads, Tablets – 481px—768px */
+@media (min-width: 481px) {
+  .tb-card-img {
+    width: 80px;
+    flex: 0 0 80px;
+  }
+
+  .tb-main-title {
+    font-size: 1.4rem;
+  }
+
+  .tb-title {
+    font-size: 1.9rem;
+  }
+}
+
+/* c) Small screens, laptops – 769px—1024px */
+@media (min-width: 769px) {
+  /* layout becomes two columns: main | side */
+  .tb-content {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+    gap: 28px;
+  }
+
+  .tb-card-img {
+    width: 96px;
+    flex: 0 0 96px;
+  }
+
+  .tb-main-img {
+    aspect-ratio: 16 / 9;
+    max-height: 420px;
+  }
+}
+
+/* d) Desktops, large screens – 1025px—1200px */
+@media (min-width: 1025px) {
+  .tb-card-img {
+    width: 110px;
+    flex: 0 0 110px;
+  }
+
+  .tb-main-img {
+    max-height: 480px;
+  }
+
+  .tb-title {
+    font-size: 2.6rem;
+  }
+
+  .tb-main-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* e) Extra large screens, TV – 1201px and more */
+@media (min-width: 1201px) {
+  .tb-card-img {
+    width: 120px;
+    flex: 0 0 120px;
+  }
+
+  .tb-section {
+    padding: 28px;
+  }
+
+  .tb-content {
+    gap: 36px;
+  }
+}
+ /* ===== Mobile-first styles ===== */
+  /* ===== Mobile-first styles ===== */
+:root {
+  --footer-bg: url('images/footer.jpg');
+  --overlay: rgba(8, 15, 30, .62);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.82);
+  --accent: #ff5a2c;
+  --maxw: 1200px;
+  --radius: 14px;
+}
+.travel-footer {
+  color: var(--text);
+  background-image: linear-gradient(var(--overlay), var(--overlay)), var(--footer-bg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.footer__inner {
+  max-width: var(--maxw);
+  width: 100%;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  padding-top: 28px;
+  padding-right: 16px;
+  padding-bottom: 24px;
+  padding-left: 16px;
+}
+
+.footer__title {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 18px;
+  margin-left: 0;
+  font-size: clamp(10px, 6vw, 24px);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.accent {
+  color: #fff;
+}
+
+.footer__grid {
+  display: grid;
+  gap: 22px;
+}
+
+.footer__heading {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+  margin-top: 2px;
+  margin-right: 0;
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+
+.footer__address {
+  font-style: normal;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.btn-mail {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  padding-top: 10px;
+  padding-right: 14px;
+  padding-bottom: 10px;
+  padding-left: 14px;
+  border-radius: 3px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-mail:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.footer__phone {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer__phone:hover {
+  text-decoration: underline;
+}
+
+/* Socials */
+.socials {
+  list-style: none;
+  padding-top: 12px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.socials__link {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,.12);
+  text-decoration: none;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  color: #fff;
+  opacity: 0.95;
+}
+
+/* Bottom row */
+.footer__bottom {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  align-items: center;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+}
+
+.footer__links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer__links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+/* Payment icons */
+.payments {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  height: 25px;
+  
+}
+
+.pay {
+  display: inline-flex;
+}
+
+.pay__svg {
+  width: 64px;
+  height: 24px;
+}
+
+.pay__bg {
+  fill: rgba(255,255,255,.12);
+}
+
+.pay text {
+  fill: #fff;
+}
+
+
+/* b) 481—768px (tablets) */
+@media (min-width: 481px) {
+  .footer__inner {
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 26px;
+    padding-left: 20px;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .payments {
+    justify-content: flex-end;
+  }
+  .footer__bottom {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* c) 769—1024px (small screens, laptops) */
+@media (min-width: 769px) {
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ліва колонка: заголовок, права колонка: Address+Contact */
+    align-items: start;
+    gap: 40px;
+  }
+
+  .footer__info {
+    display: flex;
+    gap: 60px; /* відстань між Address і Contact */
+    align-items: flex-start; /* вирівняння по верхньому краю */
+  }
+
+  .footer__col {
+    flex: 1;
+  }
+}
+
+/* d) 1025—1200px (desktops) */
+@media (min-width: 1025px) {
+  .footer__title {
+    font-size: clamp(34px, 4vw, 48px);
+  }
+  .footer__inner {
+    padding-top: 70px;
+    padding-right: 24px;
+    padding-bottom: 34px;
+    padding-left: 24px;
+  }
+}
+
+/* e) 1201px+ (xl screens & TV) */
+@media (min-width: 1201px) {
+  .footer__inner {
+    padding-top: 80px;
+    padding-right: 0;
+    padding-bottom: 40px;
+    padding-left: 0;
+  }
+  .footer__grid {
+    gap: 36px;
+  }
+  .socials__link {
+    width: 38px;
+    height: 38px;
+  }
+
+}/* Встановлюємо box-sizing для всіх елементів */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+  html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
