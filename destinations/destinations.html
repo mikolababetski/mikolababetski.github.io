@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Travel - Our Packages</title>
+ <link rel="stylesheet" href="..//normilize.css" />
+  <link rel="stylesheet" href="destinations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images3/logotravel.png" alt="Love Travel Logo" />
+      </div>
+
+      <nav class="nav" id="nav">
+        <ul>
+          <li><a href="../index.html">Головна</a></li>
+          <li><a href="..//otherpages/search.html">Подорожі</a></li>
+          <li><a href="destinations.html">Пункти </a></li>
+          <li><a href="../page404/page404.html">Покупки</a></li>
+          <li><a href="..//sportblog/sport.html">Блог</a></li>
+          <li><a href="#" class="open-modal">Звязок з нами</a></li>
+        </ul>
+      </nav>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+      <div id="burger" class="burger" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+        <i id="openIcon" class="fa-solid fa-bars"></i>
+        <i id="closeIcon" class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
+  </header>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Звязок з нами</h2>
+      <form id="contactForm">
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Емейл:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Повідомлення:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit" class="send-btn">Відправити</button>
+      </form>
+    </div>
+  </div>
+  <button id="scrollToTopBtn" title="Go to top">&#9650;</button>
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Пункти призначення</h1>
+      </div>
+    </div>
+  </section>
+  <section class="destinations">
+    <div class="swiper travelSwiper">
+        <div class="swiper-wrapper" id="travel-swiper-wrapper">
+            </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+  <footer class="travel-footer">
+    <div class="footer__inner">
+      <h2 class="footer__title">
+        <span class="accent"></span>
+      </h2>
+
+
+      <div class="footer__grid">
+
+        <h2 class="footer__title">
+          Подорожуйте за межі своєї уяви, <br>
+          з нашим <span class="accent">Туристичне агентство!</span>
+        </h2>
+
+
+        <div class="footer__info">
+
+          <div class="footer__col">
+            <h3 class="footer__heading">Адреса</h3>
+            <p class="footer__address">
+              1080 Брікелл-авеню<br>
+              Маямі – Флорида<br>
+              Сполучені Штати Америки
+            </p>
+            <ul class="socials">
+              <li><a href="#"><img src="images3/acebook.png" alt="Facebook"></a></li>
+              <li><a href="#"><img src="images3/twitter.png" alt="Twitter"></a></li>
+              <li><a href="#"><img src="images3/youtube.png" alt="YouTube"></a></li>
+            </ul>
+          </div>
+
+
+          <div class="footer__col">
+            <h3 class="footer__heading">Контакти</h3>
+            <a href="mailto:info@travel.com" class="btn-mail">info@travel.com</a>
+            <p><a href="tel:+01483593284" class="footer__phone">+01 483 593 284</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__links">
+          <a href="#">Тема ВордПресс для подорожей</a>
+          <span class="dot">•</span>
+          <a href="#">Оренда</a>
+          <span class="dot">•</span>
+          <a href="#">Страхування</a>
+        </div>
+        <div class="payments">
+          <img src="images3/visa.png" alt="Visa">
+          <img src="images3/sigma.png" alt="Stripe">
+          <img src="images3/paypal.png" alt="Paypal">
+          <img src="images3/mastercard.png" alt="Mastercard">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="dest.js"></script>
+</body>
+
+</html>
