@@ -1,18 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 body {
   width: 100%;
   font-family: Arial, sans-serif;
   margin: 0;
   background: linear-gradient(90deg, #e0e0e0, #bdbdbd);
 }
+
 main {
-  flex: 1;  /* займає весь вільний простір між header і footer */
+  flex: 1;
 }
 
-/* Header */
 .hero {
-  position: relative; /* щоб header міг лежати поверх */
-  height: 100vh; 
-  background-image: url("images/up_background.jpg"); 
+  position: relative;
+  height: 100vh;
+  background-image: url("images/headerhome.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,53 +24,47 @@ main {
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  position: absolute; /* поверх фонового зображення */
-  top: 0;
-  left: 0;
   width: 100%;
-  background: transparent;
-  z-index: 1000;
-  box-sizing: border-box;
-}
-
-
-
-.hero, .main-banner, header {
   position: relative;
-  overflow: hidden;
+  background-image: url('images/headerhome.jpg');
+  z-index: 10;
+
+
 }
 
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  height: 35px;
+.header .container {
+  background: url('images/headerhome.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
 }
 
-.nav-desktop ul {
+.logo img {
+  width: 140px;
+}
+
+.nav ul {
   display: flex;
   gap: 25px;
   list-style: none;
   margin: 0;
   padding: 0;
+
 }
 
-.nav-desktop a {
+.nav a {
+  color: white;
   text-decoration: none;
-  color:white;
-  font-weight: 600;
+  font-weight: 500;
   transition: color 0.3s;
+
 }
 
-.nav-desktop a:hover {
-  color: orangered;
+.nav a:hover {
+  color: #f5b921;
 }
 
-/* === СОЦІАЛЬНІ ІКОНКИ === */
 .social-icons {
   display: flex;
   gap: 15px;
@@ -81,23 +76,112 @@ main {
   transition: color 0.3s;
 }
 
-
 .social-icons a:hover {
-  color: #00bcd4;
+  color: #f5b921;
 }
-@media (max-width: 900px) {
-  .social-icons {
-    display: none; /* ❌ приховуємо соцмережі на мобільних */
-  }
+
+.burger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
 }
-/* ===== Модальне вікно ===== */
+
+#closeIcon {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+
+    .header .container {
+        padding: 15px 20px;
+        width: 100%;
+    }
+    .logo img {
+        width: 120px;
+    }
+    .social-icons {
+        display: none; 
+    }
+
+    .burger {
+        display: block;
+        position: relative; 
+        z-index: 1001;
+    }
+    #closeIcon {
+        display: none;
+    }
+
+    .nav {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+
+        position: fixed; 
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100vh; 
+        z-index: 999; 
+    }
+    
+
+    .nav.open {
+        opacity: 1;
+        visibility: visible;
+        background: 
+            linear-gradient(
+                rgba(0, 0, 0, 0.4), 
+                rgba(0, 0, 0, 0.4) 
+            ), 
+            url('images/headerhome.jpg') no-repeat center/cover;
+            
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header.menu-open .logo {
+        display: none; 
+    }
+    
+    .header.menu-open .burger {
+        position: fixed; 
+        right: 20px;
+        top: 25px;
+        z-index: 1001; 
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; 
+        padding: 0; 
+        margin-top: 50px; 
+    }
+    .nav a {
+        color: white;
+        font-size: 32px; 
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    .nav a:hover {
+        color: #f5b921;
+    }
+}
+
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
@@ -109,7 +193,7 @@ main {
   border-radius: 12px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
@@ -157,7 +241,6 @@ main {
   color: #000;
 }
 
-/* ===== Адаптивність ===== */
 @media (max-width: 480px) {
   .modal-content {
     width: 95%;
@@ -165,140 +248,14 @@ main {
   }
 }
 
-/* === МОБІЛЬНЕ МЕНЮ === */
-.burger {
-  display: none;
-  cursor: pointer;
-  font-size: 24px;
-  color: white;
-}
 
-/* === ВИПАДНЕ МЕНЮ (Мобільне) === */
-.nav {
-  display: none;
-}
-
-.nav.active {
-  display: block;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  width: 100%;
-  text-align: center;
-  z-index: 999;
-}
-
-.nav ul {
-  list-style: none;
-  padding: 20px;
-  margin: 0;
-}
-
-.nav li {
-  margin: 15px 0;
-}
-
-.nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-.nav a:hover {
-  color: #00bcd4;
-}
-
-/* === АДАПТИВНІСТЬ === */
-@media (max-width: 900px) {
-  .nav-desktop {
-    display: none;
-  }
-
-  .burger {
-    display: block;
-  }
-}
-.nav.active ~ .burger #openIcon {
-  display: none;
-}
-
-.nav.active ~ .burger #closeIcon {
-  display: inline-block;
-}
-
-/* мобільна версія */
-@media (max-width: 768px) {
-  .burger {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000; /* щоб не перекривався */
-    cursor: pointer;
-  }
-}
-
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;   /* спочатку повністю сховане */
-    height: 100%;  /* висота дорівнює висоті екрана */
-    width: 250px;
-    background: #fff;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    transition: right 0.3s ease-in-out;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-  }
-
-  .nav.active {
-    right: 0; /* показати меню */
-  }
-
-  /* коли меню відкрите – показати хрестик */
-  .nav.active ~ .burger #openIcon {
-    display: none;
-  }
-
-  .nav.active ~ .burger #closeIcon {
-    display: inline-block;
-  }
-
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 20px;
-    flex-direction: column; /* якщо елементи всередині — вертикально */
-    align-items: center;
-    text-align: center;
-  }
-
-  .logo img {
-    max-height: 40px;
-  }
-  
-}
-@media (max-width: 768px) {
-  .logo img {
-    max-width: 150px;
-    height: auto;
-  }
-}
-
-
-/* === PRELOADER === */
 #preloader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000; /* темний фон */
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,11 +278,16 @@ main {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Коли прелоадер зникає */
+
 #preloader.fade-out {
   opacity: 0;
   visibility: hidden;
@@ -405,7 +367,7 @@ main {
 }
 
 .search-box label::before {
-  content: "\f3c5"; /* FA map-marker-alt */
+  content: "\f3c5";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   color: #FD661E;
@@ -457,7 +419,6 @@ main {
 }
 
 
-/* ---------- TABLETS: 481px — 768px ---------- */
 @media (min-width: 481px) {
   .hero {
     padding: 30px;
@@ -495,7 +456,6 @@ main {
 }
 
 
-/* ---------- SMALL LAPTOPS: 769px — 1024px ---------- */
 @media (min-width: 769px) {
   .hero {
     flex-direction: row;
@@ -536,7 +496,6 @@ main {
 }
 
 
-/* ---------- DESKTOPS: 1025px — 1200px ---------- */
 @media (min-width: 1025px) {
   .hero-content h1 .snow {
     font-size: 100px;
@@ -555,8 +514,6 @@ main {
   }
 }
 
-
-/* ---------- EXTRA LARGE SCREENS: 1201px+ ---------- */
 @media (min-width: 1201px) {
   .hero {
     padding: 80px;
@@ -582,6 +539,7 @@ main {
     max-width: 600px;
   }
 }
+
 @media (max-width: 768px) {
   .nav {
     position: absolute;
@@ -596,7 +554,7 @@ main {
     z-index: 999;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
-  
+
   .nav.active {
     display: flex;
   }
@@ -620,7 +578,7 @@ main {
     display: block;
     padding: 12px 0;
     width: 100%;
-    background: transparent;  /* ❌ Прибери білий фон тут */
+    background: transparent;
     color: #333;
     text-decoration: none;
     font-weight: bold;
@@ -632,46 +590,46 @@ main {
     color: #FD661E;
   }
 
-  /* Прибрати двокрапки на мобілці */
   nav ul li::after {
     display: none;
   }
 }
+
 .menu-btn {
-  background: transparent;   /* прибираємо білий фон */
+  background: transparent;
   width: 100%;
-  border: none;              /* прибираємо рамку */
+  border: none;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 15px;   /* ширина кнопки */
-  height: 15px;  /* висота кнопки */
+  width: 15px;
+  height: 15px;
   padding: 0;
-  margin-left: 1px; /* відступ від іконок */
+  margin-left: 1px;
 }
 
 .menu-btn span {
   display: block;
-  height: 3px;             /* товщина лінії */
+  height: 3px;
   width: 100%;
-  background-color: white;  /* колір ліній (можеш змінити на білий/оранжевий) */
+  background-color: white;
   border-radius: 2px;
 }
 
-/* Floating Buttons */
 
 .floating-buttons {
   position: absolute;
-  bottom: 20px; /* Підняти на 20px від низу */
+  bottom: 20px;
   right: 0;
   display: flex;
   justify-content: flex-end;
   gap: 15px;
   width: 100%;
   padding: 10px;
-  background-color: #0000; /* Колір фону, як на скріншоті */
+  background-color: #0000;
 }
+
 .floating-buttons .btn {
   border: none;
   padding: 10px 20px;
@@ -680,15 +638,17 @@ main {
   cursor: pointer;
   color: white;
 }
+
 .floating-buttons .blue {
   background: #007bff;
-  
+
 }
+
 .floating-buttons .orange {
   background: #FD661E;
 }
 
-/* Базові стилі (мобільна версія) */
+
 
 .trip-info {
   width: 100%;
@@ -696,8 +656,8 @@ main {
   text-align: left;
   background-color: white;
   background-size: cover;
-  border-radius: 0pxpx; /* якщо хочеш закруглені краї */
-  color: white; /* щоб текст не губився */
+  border-radius: 0px;
+  color: white;
 }
 
 .container-trip {
@@ -709,26 +669,26 @@ main {
 
 .trip-sub {
   font-family: 'Reenie Beanie', cursive;
-  font-size: 28px;       /* підбери розмір */
-  font-weight: 400;      /* цей шрифт зазвичай один стиль */
+  font-size: 28px;
+  font-weight: 400;
   color: #FD661E;
   margin-bottom: 5px;
 }
 
 .trip-info h2 {
   font-size: 30px;
-  font-weight: 800;   /* робить жирним */
+  font-weight: 800;
   margin: 10px 0;
-  color: #181D4E;     /* темний синьо-фіолетовий відтінок */
+  color: #181D4E;
 }
 
 
 
 .trip-text {
   color: #555;
-  margin: 10px 0 20px; /* прибрав auto, щоб текст вирівнювався по лівому краю */
+  margin: 10px 0 20px;
   font-size: 14px;
-  max-width: 600px; /* зробив трохи ширше */
+  max-width: 600px;
 }
 
 .more-btn {
@@ -739,30 +699,32 @@ main {
   padding: 12px 28px;
   border-radius: 8px;
   cursor: pointer;
-  margin: 0 0 30px 0; /* кнопка під текстом зліва */
-  display: inline-block; /* щоб не розтягувалася */
+  margin: 0 0 30px 0;
+  display: inline-block;
 }
 
 
-/* Кольорові картки */
 .trip-buttons {
   display: grid;
   gap: 50px;
   margin-bottom: 30px;
 }
+
 .trip-card {
-  height: 80px; 
+  height: 80px;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
   min-height: 100px;
 }
+
 .trip-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
 .trip-card .overlay {
   position: absolute;
   inset: 0;
@@ -773,15 +735,18 @@ main {
   font-weight: bold;
   padding-left: 15px;
 }
+
 .trip-card.orange .overlay {
-  background: linear-gradient(to right, rgba(253,102,30,0) 0%, transparent); /* було 0.9 і 50% */
+  background: linear-gradient(to right, rgba(253, 102, 30, 0) 0%, transparent);
+  /* було 0.9 і 50% */
 }
+
 .trip-card.blue .overlay {
-  background: linear-gradient(to right, rgba(30,146,253,0) 0%, transparent); /* було 0.9 і 50% */
+  background: linear-gradient(to right, rgba(30, 146, 253, 0) 0%, transparent);
+  /* було 0.9 і 50% */
 }
 
 
-/* Картки турів */
 .trip-list {
   display: grid;
   gap: 20px;
@@ -791,10 +756,10 @@ main {
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  position: relative; /* щоб можна було абсолютно позиціонувати панельку */
+  position: relative;
 }
 
 .tour-card img {
@@ -804,7 +769,6 @@ main {
   display: block;
 }
 
-/* верхня панель під фото */
 .tour-top {
   background: #fff;
   border-radius: 10px;
@@ -814,9 +778,9 @@ main {
   justify-content: space-between;
   align-items: center;
 
-  margin: 10px auto; /* трішки нижче */
+  margin: 10px auto;
   width: 85%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -833,7 +797,6 @@ main {
 }
 
 
-/* блок з інфо */
 .tour-info {
   padding: 15px;
   text-align: left;
@@ -842,8 +805,8 @@ main {
 .tour-info h3 {
   margin: 5px 0;
   font-size: 18px;
-  font-weight: 700;  /* щоб був жирний */
-  color: #181D4E;    /* темний як у макеті */
+  font-weight: 700;
+  color: #181D4E;
 }
 
 .country {
@@ -860,12 +823,11 @@ main {
   margin: 10px 0 20px;
   color: #555;
   line-height: 1.4;
-  border-top: 1px solid #eee; /* сіра лінія як роздільник */
+  border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   padding: 10px 0;
 }
 
-/* низ картки */
 .tour-bottom {
   display: flex;
   justify-content: space-between;
@@ -885,7 +847,7 @@ main {
 }
 
 .details-btn.blue {
-  background:#1E92FD;
+  background: #1E92FD;
 }
 
 .price {
@@ -906,40 +868,38 @@ main {
 }
 
 
-/* -------- Media Queries -------- */
 
-/* планшет */
 @media (min-width: 768px) {
   .trip-buttons {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .trip-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* десктоп */
+
 @media (min-width: 1200px) {
   .trip-list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-/* --- Vacation Section --- */
-/* --- Vacation Section з фоном --- */
+
 .vacation-section {
   background: url("images/snowflake.jpg") no-repeat center/cover;
   padding: 60px 20px;
   text-align: center;
   position: relative;
-  border-radius: 0px; /* щоб виглядало гарно, можна прибрати */
-    width: 100%;
+  border-radius: 0px;
+  width: 100%;
 }
 
 .vacation-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, -2); /* чорний прозорий шар для затемнення */
+  background: rgba(0, 0, 0, -2);
   z-index: 1;
   border-radius: inherit;
 }
@@ -947,7 +907,7 @@ main {
 
 .vacation-content {
   position: relative;
-  z-index: 2; /* піднімає текст і форму над фоном */
+  z-index: 2;
 }
 
 .vacation-sub {
@@ -976,7 +936,6 @@ main {
   line-height: 1.6;
 }
 
-/* Mobile-first */
 .vacation-search {
   display: flex;
   flex-direction: column;
@@ -984,7 +943,7 @@ main {
   background: #fff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .vacation-item {
@@ -994,22 +953,22 @@ main {
   border: 1px solid #eee;
   padding: 12px 15px;
   border-radius: 10px;
-  text-align: left; /* Додано вирівнювання по лівому краю */
+  text-align: left;
 }
 
 .vacation-item i {
   font-size: 18px;
   color: #1E92FD;
-  text-align: left; /* Вирівнювання іконки по лівому краю */
+  text-align: left;
 }
 
 .vacation-item label {
   font-weight: 600;
   font-size: 14px;
   color: #181D4E;
-  text-align: left; /* Вирівнювання мітки по лівому краю */
-  width: auto; /* Дозволяє мітці займати потрібну ширину */
-  margin-right: 10px; /* Відступ після мітки */
+  text-align: left;
+  width: auto;
+  margin-right: 10px;
 }
 
 .vacation-item input,
@@ -1019,7 +978,7 @@ main {
   font-size: 14px;
   color: #777;
   width: 100%;
-  text-align: left; /* Вирівнювання тексту вводу по лівому краю */
+  text-align: left;
 }
 
 .vacation-btn {
@@ -1032,15 +991,14 @@ main {
   cursor: pointer;
   transition: 0.3s;
   text-transform: uppercase;
-  text-align: center; /* Кнопка залишається по центру */
+  text-align: center;
 }
+
 .vacation-btn:hover {
   background: #e65512;
 }
 
-/* --- Media Queries --- */
 
-/* Tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   .vacation-title {
     font-size: 34px;
@@ -1062,7 +1020,7 @@ main {
   }
 }
 
-/* Desktops */
+
 @media (min-width: 1025px) {
   .vacation-title {
     font-size: 40px;
@@ -1087,17 +1045,17 @@ main {
   }
 }
 
-/* === Travel Destinations Section === */
-.destinations-section { 
+
+.destinations-section {
   padding: 60px 20px;
   width: 100%;
-  margin: auto; /* центрує тільки сам контент секції */
+  margin: auto;
   font-family: Arial, sans-serif;
   display: grid;
   justify-content: center;
   align-items: center;
   background-color: whitesmoke;
-    width: 100%;
+  width: 100%;
 
 }
 
@@ -1115,7 +1073,7 @@ main {
 
 .destinations-header h2 {
   font-size: 32px;
-  font-weight: 800px;
+  font-weight: 800;
   color: #0d1b3e;
   margin-bottom: 20px;
 }
@@ -1129,8 +1087,8 @@ main {
 .destinations-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 5px; /* було 10px */
-  margin-top: 10px; /* було 40px */
+  gap: 5px;
+  margin-top: 10px;
   align-items: start;
 }
 
@@ -1141,15 +1099,15 @@ main {
 
 .destinations-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* адаптивна сітка */
-  gap: 20px; /* рівні відступи */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* адаптивна сітка */
+  gap: 20px;
 }
-/* ВИПРАВЛЕННЯ: Змінено стилі для карток */
+
 .dest-card {
   position: relative;
   border-radius: 12px;
-  /* width: 200px;  <- прибираємо */
-  height: 350px; /* можна залишити */
+  height: 350px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -1160,24 +1118,22 @@ main {
   padding: 20px;
 }
 
-/* ВИПРАВЛЕННЯ: Новий стиль для контейнера зображення */
 .image-card {
   position: relative;
-  aspect-ratio: 3 / 4; /* співвідношення сторін (міняй під себе: 4/3, 16/9 тощо) */
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 12px;
 }
 
 
-/* ВИПРАВЛЕННЯ: Стиль для самого зображення */
 .image-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* картинка обрізається, але не розтягується */
+  object-fit: cover;
   border-radius: 12px;
   transition: transform 0.3s ease;
 }
-/* Ефект при наведенні */
+
 .image-card:hover img {
   transform: scale(1.05);
 }
@@ -1195,7 +1151,7 @@ main {
   width: calc(100% - 30px);
 }
 
-/* Додатковий затемнюючий шар для кращої читабельності тексту */
+
 .image-card::after {
   content: '';
   position: absolute;
@@ -1208,52 +1164,55 @@ main {
   z-index: 1;
 }
 
-/* === Responsive Breakpoints === */
 
-/* Mobile (320px–480px) */
+
 @media (max-width: 480px) {
   .destinations-content {
     grid-template-columns: 1fr;
   }
+
   .destinations-cards {
     grid-template-columns: 1fr;
   }
-  .image-card, .dest-card {
-    height: 280px; /* Менша висота на мобільних */
+
+  .image-card,
+  .dest-card {
+    height: 280px;
   }
 }
 
-/* Tablets (481px–768px) */
+
 @media (min-width: 481px) and (max-width: 768px) {
   .destinations-content {
     grid-template-columns: 1fr;
   }
+
   .destinations-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Small screens, laptops (769px–1024px) */
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .destinations-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktops (1025px–1200px) */
+
 @media (min-width: 1025px) and (max-width: 1200px) {
   .destinations-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Extra large screens (1201px and more) */
+
 @media (min-width: 1201px) {
   .destinations-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-/* Adventure section */
+
 *,
 *::before,
 *::after {
@@ -1261,8 +1220,6 @@ main {
 }
 
 
-
-/* MOBILE FIRST – 320px and up */
 .adventure-section {
   background-image: url(images/Embrance_the_thrill.jpg);
   padding: 30px 15px;
@@ -1325,7 +1282,7 @@ main {
 
 .adventure-list li {
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 8px;
 }
 
@@ -1341,7 +1298,6 @@ main {
   max-width: 300px;
 }
 
-/* TABLETS – 481px–768px */
 @media (min-width: 481px) {
   .adventure-title {
     font-size: 28px;
@@ -1353,7 +1309,7 @@ main {
   }
 }
 
-/* SMALL LAPTOPS – 769px–1024px */
+
 @media (min-width: 769px) {
   .adventure-container {
     flex-direction: row;
@@ -1376,7 +1332,6 @@ main {
   }
 }
 
-/* DESKTOPS – 1025px–1200px */
 @media (min-width: 1025px) {
   .adventure-title {
     font-size: 36px;
@@ -1387,7 +1342,7 @@ main {
   }
 }
 
-/* XL SCREENS – 1201px+ */
+
 @media (min-width: 1201px) {
   .adventure-container {
     max-width: 1200px;
@@ -1398,8 +1353,7 @@ main {
     font-size: 40px;
   }
 }
-/* Itineraries Section */
-/* Travel Itineraries Section */
+
 .travel-itineraries-section {
   width: 100%;
   padding: 100px 20px;
@@ -1433,7 +1387,7 @@ main {
   width: 1000px;
   height: 400px;
   overflow: hidden;
-  /* Без закруглень */
+
 }
 
 .travel-itineraries-image img {
@@ -1478,22 +1432,22 @@ main {
 }
 
 .orange-images-row img {
-  height: 60px; /* Регулюйте висоту за потребою */
+  height: 60px;
   width: auto;
   max-width: 200px;
 }
 
-/* Адаптивність */
+
 @media (max-width: 1024px) {
   .travel-itineraries-main-title {
     font-size: 50px;
   }
-  
+
   .travel-itineraries-image {
     width: 450px;
     height: 450px;
   }
-  
+
   .orange-images-row img {
     height: 50px;
   }
@@ -1503,29 +1457,29 @@ main {
   .travel-itineraries-section {
     padding: 80px 20px;
   }
-  
+
   .travel-itineraries-main-title {
     font-size: 40px;
     margin-bottom: 50px;
   }
-  
+
   .travel-itineraries-image {
     width: 400px;
     height: 400px;
   }
-  
+
   .travel-itineraries-subtitle {
     font-size: 36px;
   }
-  
+
   .travel-itineraries-brand {
     font-size: 40px;
   }
-  
+
   .orange-images-row {
     gap: 15px;
   }
-  
+
   .orange-images-row img {
     height: 45px;
   }
@@ -1535,38 +1489,38 @@ main {
   .travel-itineraries-section {
     padding: 60px 15px;
   }
-  
+
   .travel-itineraries-main-title {
     font-size: 32px;
   }
-  
+
   .travel-itineraries-image {
     width: 320px;
     height: 320px;
   }
-  
+
   .travel-itineraries-subtitle {
     font-size: 28px;
   }
-  
+
   .travel-itineraries-brand {
     font-size: 32px;
     letter-spacing: 2px;
   }
-  
+
   .orange-images-row {
     gap: 10px;
   }
-  
+
   .orange-images-row img {
     height: 35px;
   }
 }
-/* Reviews Section */
+
 .reviews-section {
   width: 100%;
   padding: 100px 20px;
-  background-image: url('images/Unforgettable_travel.jpg'); /* Фонове зображення */
+  background-image: url('images/Unforgettable_travel.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1581,7 +1535,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6); /* Затемнення для кращої читабельності */
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
@@ -1598,7 +1552,7 @@ main {
   max-width: 800px;
   margin-left: 0;
   margin-right: auto;
-  
+
 }
 
 .reviews-title {
@@ -1614,7 +1568,7 @@ main {
   font-size: 18px;
   line-height: 1.6;
   color: #e0e0e0;
-  
+
 }
 
 .review-cards {
@@ -1622,7 +1576,7 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 40px;
   margin-top: 50px;
-  
+
 }
 
 .review-card {
@@ -1631,10 +1585,10 @@ main {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* текст зверху, автор знизу */
+  justify-content: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #fff;
-  
+
 }
 
 
@@ -1658,17 +1612,18 @@ main {
   height: 100%;
   object-fit: cover;
 }
+
 .review-image-placeholder {
   width: 100px;
   height: 100px;
-  background-color: #1a73e8; /* Синій колір */
+  background-color: #1a73e8;
   margin-bottom: 20px;
-  border-radius: 8px; /* Можна змінити на 0 для квадрата */
+  border-radius: 8px;
 }
 
 .review-text {
-   flex-grow: 1;
-  text-align: left; /* вирівнювання ліворуч */
+  flex-grow: 1;
+  text-align: left;
   margin-bottom: 20px;
 }
 
@@ -1676,21 +1631,21 @@ main {
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 20px;
-  font-style: normal; /* прибираємо курсив */
-  quotes: none;       /* прибираємо лапки */
+  font-style: normal;
+  quotes: none;
   color: #fff;
 }
 
 .review-author {
   display: flex;
   align-items: center;
-  gap: 10px; /* менший відступ між фото і текстом */
+  gap: 10px;
   margin-top: auto;
 }
 
 .review-author-info {
   display: flex;
-  flex-direction: column; /* щоб ім’я і місто були підряд */
+  flex-direction: column;
   line-height: 1.2;
 }
 
@@ -1703,12 +1658,12 @@ main {
   font-size: 14px;
   color: #e0e0e0;
 }
-/* Адаптивність */
+
 @media (max-width: 1024px) {
   .reviews-title {
     font-size: 42px;
   }
-  
+
   .review-cards {
     gap: 30px;
   }
@@ -1718,15 +1673,15 @@ main {
   .reviews-section {
     padding: 80px 20px;
   }
-  
+
   .reviews-title {
     font-size: 36px;
   }
-  
+
   .reviews-description {
     font-size: 16px;
   }
-  
+
   .review-cards {
     grid-template-columns: 1fr;
     max-width: 500px;
@@ -1738,23 +1693,21 @@ main {
   .reviews-section {
     padding: 60px 15px;
   }
-  
+
   .reviews-title {
     font-size: 32px;
   }
-  
+
   .review-card {
     padding: 20px;
   }
-  
+
   .review-image {
     width: 80px;
     height: 80px;
   }
 }
 
-/* === Travel Packages Section === */
-/* === Travel Packages Section === */
 .packages-section {
   position: relative;
   padding: 0px 0px;
@@ -1766,13 +1719,13 @@ main {
 }
 
 .packages-overlay {
-   display: none;
+  display: none;
 }
 
 .packages-header,
 .packages-cards,
 .packages-note {
-  position: center;
+  position: relative;
   z-index: 2;
 }
 
@@ -1783,18 +1736,19 @@ main {
   color: #181D4E;
 
 }
+
 .packages-header p {
-  font-size: 16px;   /* розмір шрифту */
-  color: #6E6E6E;       /* колір тексту */
-  text-align: left;  /* вирівнювання */
+  font-size: 16px;
+  color: #6E6E6E;
+  text-align: left;
   justify-content: center;
   text-align: center;
 }
 
 .packages-subtitle {
-  font-family: 'Reenie Beanie', cursive; /* 🔹 новий шрифт */
+  font-family: 'Reenie Beanie', cursive;
   color: #ff6600;
-  font-size: 24px;  /* можна збільшити, бо цей шрифт дрібний */
+  font-size: 24px;
   display: block;
   margin-bottom: 10px;
 }
@@ -1811,12 +1765,12 @@ main {
   color: #e0e0e0;
 }
 
-/* Cards layout */
+
 .packages-cards {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  
+
 }
 
 .packages-card {
@@ -1833,7 +1787,7 @@ main {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 15px;
-  
+
 }
 
 .packages-price {
@@ -1866,12 +1820,14 @@ main {
   cursor: pointer;
   transition: 0.3s;
 }
+
 .packages-note {
   margin-top: 40px;
   font-size: 14px;
   color: #6E6E6E;
-  text-align: center;   /* 🔹 вирівнювання по центру */
+  text-align: center;
 }
+
 .packages-btn:hover {
   background: #e65c00;
 }
@@ -1884,11 +1840,11 @@ main {
   background: #000;
 }
 
-/* Highlighted and Popular cards */
+
 .packages-card-highlight {
   background: #ff6600;
   color: #fff;
-} 
+}
 
 .packages-card-popular {
   background: #14213d;
@@ -1914,7 +1870,7 @@ main {
   color: #e0e0e0;
 }
 
-/* === Responsive === */
+
 @media (min-width: 769px) {
   .packages-cards {
     flex-direction: row;
@@ -1927,114 +1883,109 @@ main {
   }
 }
 
-/* Discover Section Styles */
-/* Додаємо шрифт Reenie Beanie */
-/* Додаємо шрифт Reenie Beanie */
-/* =================================== */
-/* ЗАГАЛЬНІ СТИЛІ КАРТОК (Десктоп) */
-/* =================================== */
+
 .packages-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px; 
-    flex-wrap: wrap; 
-    margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 50px 0;
 }
 
 .packages-card {
-    /* Розміри та розташування */
-    flex-basis: 300px; 
-    flex-grow: 1; 
-    max-width: 350px;
-    
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+
+  flex-basis: 300px;
+  flex-grow: 1;
+  max-width: 350px;
+
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* Налаштування для виділеної картки */
+
 .packages-card-highlight {
-    /* Для розташування залишаємо трансформацію, якщо ви плануєте її використовувати */
-    transform: scale(1.05); 
+
+  transform: scale(1.05);
 }
 
-/* Налаштування для популярної картки */
 .packages-label {
-    position: absolute;
-    top: 15px;
-    right: -30px;
-    /* Видалено background-color, color */
-    padding: 5px 30px;
-    font-weight: bold;
-    font-size: 14px;
-    transform: rotate(45deg);
-    width: 150px;
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  padding: 5px 30px;
+  font-weight: bold;
+  font-size: 14px;
+  transform: rotate(45deg);
+  width: 150px;
 }
 
-/* Скидання стилів для елементів */
 .packages-card-title {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
+
 .packages-price {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
+
 .packages-price span {
-    display: block;
+  display: block;
 }
+
 .packages-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
 }
+
 .packages-list li {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
-/* Кнопка */
+
 .packages-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid; /* Залишаємо межу, але без кольору */
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
 }
+
 .packages-note {
-    text-align: center;
-    margin-top: 40px;
+  text-align: center;
+  margin-top: 40px;
 }
 
 
-/* =================================== */
-/* МОБІЛЬНА АДАПТАЦІЯ (max-width: 768px) */
-/* =================================== */
+
 @media (max-width: 768px) {
-    .packages-cards {
-        flex-direction: column; 
-        gap: 25px; 
-        padding: 0 20px; 
-    }
+  .packages-cards {
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 20px;
+  }
 
-    .packages-card {
-        max-width: 100%; 
-        flex-basis: auto; 
-        margin: 0 auto; 
-        padding: 25px 20px; 
-    }
-    
-    /* Скасовуємо трансформацію для виділеної картки на мобільному */
-    .packages-card-highlight {
-        transform: scale(1);
-    }
+  .packages-card {
+    max-width: 100%;
+    flex-basis: auto;
+    margin: 0 auto;
+    padding: 25px 20px;
+  }
 
-    .packages-btn {
-        width: 100%; 
-    }
+
+  .packages-card-highlight {
+    transform: scale(1);
+  }
+
+  .packages-btn {
+    width: 100%;
+  }
 }
-@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 
-/* Discover Adventure Section Styles */
+
+
 .discover-adventure-section {
   padding: 40px 0;
   background-color: #ffffff;
@@ -2047,7 +1998,7 @@ main {
   font-family: 'Jost', sans-serif;
 }
 
-/* Стилі для заголовка Wandering Souls */
+
 .wandering-souls-title {
   font-family: 'Reenie Beanie', cursive;
   font-size: 16px;
@@ -2077,7 +2028,7 @@ main {
   font-weight: 700;
   text-align: left;
   line-height: 1.2;
-  font-family: 'Reenie Beanie', cursive; /* Додаємо шрифт Reenie Beanie */
+  font-family: 'Reenie Beanie', cursive;
 }
 
 .discover-adventure-description {
@@ -2086,7 +2037,7 @@ main {
   color: #6E6E6E;
   margin-bottom: 25px;
   text-align: left;
-    font-family: 'Poppins', cursive; /* Додаємо шрифт Reenie Beanie */
+  font-family: 'Poppins', cursive;
 }
 
 .discover-adventure-options {
@@ -2103,10 +2054,10 @@ main {
   color: #6E6E6E;
   margin-bottom: 8px;
   font-weight: 600;
-  font-family: 'Poppins', cursive; /* Додаємо шрифт Reenie Beanie */
+  font-family: 'Poppins', cursive;
 }
 
-/* Додаємо роздільник --- */
+
 .discover-divider {
   height: 2px;
   background-color: #1E92FD;
@@ -2126,12 +2077,12 @@ main {
   border: none;
   padding: 12px 30px;
   font-size: 14px;
-  font-weight: 700; /* Робимо напис жирним */
+  font-weight: 700;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-family: 'Jost', sans-serif;
-  text-transform: uppercase; /* Робимо текст великими літерами */
+  text-transform: uppercase;
 }
 
 .discover-adventure-btn:hover {
@@ -2153,13 +2104,13 @@ main {
   border-radius: 6px;
 }
 
-/* Прибираємо span з текстом "Image" */
+
 .discover-adventure-image span {
   display: none;
 }
 
 
-/* Адаптивність для нового заголовка */
+
 @media (min-width: 481px) {
   .wandering-souls-title {
     font-size: 36px;
@@ -2184,106 +2135,102 @@ main {
   }
 }
 
-/* Tablet styles (481px—768px) */
 @media (min-width: 481px) {
   .discover-adventure-section {
     padding: 50px 0;
   }
-  
+
   .discover-adventure-container {
     padding: 0 30px;
   }
-  
+
   .discover-adventure-title {
     font-size: 32px;
   }
-  
+
   .discover-adventure-description {
     font-size: 15px;
   }
-  
+
   .discover-option-title {
     font-size: 17px;
   }
-  
+
   .discover-adventure-image img {
     max-height: 350px;
   }
 }
 
-/* Small screens, laptops (769px—1024px) */
+
 @media (min-width: 769px) {
   .discover-adventure-section {
     padding: 60px 0;
   }
-  
+
   .discover-adventure-container {
     padding: 0 40px;
     flex-direction: row;
     align-items: center;
     gap: 40px;
   }
-  
+
   .discover-adventure-content {
     flex: 1;
   }
-  
+
   .discover-adventure-image {
     flex: 1;
   }
-  
+
   .discover-adventure-title {
     font-size: 36px;
   }
-  
+
   .discover-adventure-image img {
     max-height: 400px;
   }
 }
 
-/* Desktops, large screens (1025px—1200px) */
 @media (min-width: 1025px) {
   .discover-adventure-container {
     padding: 0 20px;
   }
-  
+
   .discover-adventure-title {
     font-size: 40px;
   }
-  
+
   .discover-adventure-description {
     font-size: 16px;
   }
-  
+
   .discover-option-title {
     font-size: 18px;
   }
-  
+
   .discover-adventure-image img {
     max-height: 450px;
   }
 }
 
-/* Extra large screens (1201px and more) */
 @media (min-width: 1201px) {
   .discover-adventure-container {
     max-width: 1300px;
     gap: 60px;
   }
-  
+
   .discover-adventure-image img {
     max-height: 500px;
   }
 }
-/* ===== Travel Blog Styles ===== */
-/* ================= mobile-first styles (unique names tb-*) ================= */
+
 .tb-section {
   font-family: "Arial", sans-serif;
   padding: 18px;
   max-width: 1300px;
   margin: 0 auto;
   color: #333;
-  background: #fff; /* Додай сюди білий фон */
+  background: #fff;
 }
 
 
@@ -2293,7 +2240,7 @@ main {
   font-weight: 700;
   margin: 0 0 6px;
   font-size: 30px;
-  font-family: 'Reenie Beanie', cursive; /* Додаємо шрифт Reenie Beanie */
+  font-family: 'Reenie Beanie', cursive;
 }
 
 .tb-title {
@@ -2302,15 +2249,17 @@ main {
   margin: 0 0 8px;
   color: #181D4E;
 }
+
 .tb-share {
-  font-size: 14px;        /* дрібний текст */
-  font-weight: 400;       /* не жирний */
-  color: #666666;         /* сірий відтінок */
-  text-align: center;     /* по центру */
-  line-height: 1.6;       /* зручне міжряддя */
-  max-width: 700px;       /* обмеження ширини для гарного вигляду */
-  margin: 0 auto;         /* центрування по горизонталі */
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
+
 .tb-desc {
   text-align: center;
   color: #6b6b6b;
@@ -2319,14 +2268,14 @@ main {
   font-size: 0.95rem;
 }
 
-/* layout */
+
 .tb-content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
 }
 
-/* MAIN article (stacked on mobile) */
+
 .tb-main {
   display: flex;
   flex-direction: column;
@@ -2385,21 +2334,21 @@ main {
   transition: background-color 0.2s ease;
 }
 
-/* SIDE list cards: image on left, text on right */
+
 .tb-side {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* one row card */
+
 .tb-card {
   display: flex;
   gap: 12px;
   align-items: flex-start;
 }
 
-/* IMAGE (small) - reduced by default for mobile */
+
 .tb-card-img {
   width: 64px;
   aspect-ratio: 3 / 2;
@@ -2416,7 +2365,7 @@ main {
   display: block;
 }
 
-/* TEXT content next to image */
+
 .tb-card-body {
   flex: 1;
 }
@@ -2445,86 +2394,80 @@ main {
   font-size: 0.93rem;
   line-height: 1.4;
 }
+
 .packages-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px; 
-    flex-wrap: wrap; 
-    margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 50px 0;
 }
 
 .packages-card {
-    /* Розміри та розташування */
-    flex-basis: 300px; 
-    flex-grow: 1; 
-    max-width: 350px;
-    
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+  flex-basis: 300px;
+  flex-grow: 1;
+  max-width: 350px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* Налаштування для виділеної картки */
+
 .packages-card-highlight {
-    /* Для розташування залишаємо трансформацію, якщо ви плануєте її використовувати */
-    transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
-/* Налаштування для популярної картки */
 .packages-label {
-    position: absolute;
-    top: 15px;
-    right: -30px;
-    /* Видалено background-color, color */
-    padding: 5px 30px;
-    font-weight: bold;
-    font-size: 14px;
-    transform: rotate(45deg);
-    width: 150px;
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  padding: 5px 30px;
+  font-weight: bold;
+  font-size: 14px;
+  transform: rotate(45deg);
+  width: 150px;
 }
 
-/* Скидання стилів для елементів */
+
 .packages-card-title {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
+
 .packages-price {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
+
 .packages-price span {
-    display: block;
+  display: block;
 }
+
 .packages-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
 }
+
 .packages-list li {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
-/* Кнопка */
+
 .packages-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid; /* Залишаємо межу, але без кольору */
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
 }
+
 .packages-note {
-    text-align: center;
-    margin-top: 40px;
+  text-align: center;
+  margin-top: 40px;
 }
 
 
-/* =================================== */
-/* МОБІЛЬНА АДАПТАЦІЯ (max-width: 768px) */
-/* =================================== */
-
-/* ===================== Breakpoints (user requested) ===================== */
-/* a) Mobile devices – 320px—480px  (base covers these) */
-/* b) iPads, Tablets – 481px—768px */
 @media (min-width: 481px) {
   .tb-card-img {
     width: 80px;
@@ -2540,9 +2483,8 @@ main {
   }
 }
 
-/* c) Small screens, laptops – 769px—1024px */
+
 @media (min-width: 769px) {
-  /* layout becomes two columns: main | side */
   .tb-content {
     grid-template-columns: 2fr 1fr;
     align-items: start;
@@ -2560,7 +2502,6 @@ main {
   }
 }
 
-/* d) Desktops, large screens – 1025px—1200px */
 @media (min-width: 1025px) {
   .tb-card-img {
     width: 110px;
@@ -2580,7 +2521,7 @@ main {
   }
 }
 
-/* e) Extra large screens, TV – 1201px and more */
+
 @media (min-width: 1201px) {
   .tb-card-img {
     width: 120px;
@@ -2595,8 +2536,7 @@ main {
     gap: 36px;
   }
 }
- /* ===== Mobile-first styles ===== */
-  /* ===== Mobile-first styles ===== */
+
 :root {
   --footer-bg: url('images/footer.jpg');
   --overlay: rgba(8, 15, 30, .62);
@@ -2606,6 +2546,7 @@ main {
   --maxw: 1200px;
   --radius: 14px;
 }
+
 .travel-footer {
   color: var(--text);
   background-image: linear-gradient(var(--overlay), var(--overlay)), var(--footer-bg);
@@ -2695,7 +2636,6 @@ main {
   text-decoration: underline;
 }
 
-/* Socials */
 .socials {
   list-style: none;
   padding-top: 12px;
@@ -2716,7 +2656,7 @@ main {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: rgba(255,255,255,.12);
+  background-color: rgba(255, 255, 255, .12);
   text-decoration: none;
 }
 
@@ -2728,7 +2668,6 @@ main {
   opacity: 0.95;
 }
 
-/* Bottom row */
 .footer__bottom {
   margin-top: 22px;
   display: grid;
@@ -2758,13 +2697,13 @@ main {
   opacity: 0.5;
 }
 
-/* Payment icons */
+
 .payments {
   display: flex;
   gap: 30px;
   justify-content: flex-start;
   height: 25px;
-  
+
 }
 
 .pay {
@@ -2777,7 +2716,7 @@ main {
 }
 
 .pay__bg {
-  fill: rgba(255,255,255,.12);
+  fill: rgba(255, 255, 255, .12);
 }
 
 .pay text {
@@ -2785,7 +2724,6 @@ main {
 }
 
 
-/* b) 481—768px (tablets) */
 @media (min-width: 481px) {
   .footer__inner {
     padding-top: 40px;
@@ -2793,30 +2731,32 @@ main {
     padding-bottom: 26px;
     padding-left: 20px;
   }
+
   .footer__grid {
     grid-template-columns: 1fr 1fr;
   }
+
   .payments {
     justify-content: flex-end;
   }
+
   .footer__bottom {
     grid-template-columns: 1fr auto;
   }
 }
 
-/* c) 769—1024px (small screens, laptops) */
 @media (min-width: 769px) {
   .footer__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* ліва колонка: заголовок, права колонка: Address+Contact */
+    grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: 40px;
   }
 
   .footer__info {
     display: flex;
-    gap: 60px; /* відстань між Address і Contact */
-    align-items: flex-start; /* вирівняння по верхньому краю */
+    gap: 60px;
+    align-items: flex-start;
   }
 
   .footer__col {
@@ -2824,11 +2764,11 @@ main {
   }
 }
 
-/* d) 1025—1200px (desktops) */
 @media (min-width: 1025px) {
   .footer__title {
     font-size: clamp(34px, 4vw, 48px);
   }
+
   .footer__inner {
     padding-top: 70px;
     padding-right: 24px;
@@ -2837,7 +2777,6 @@ main {
   }
 }
 
-/* e) 1201px+ (xl screens & TV) */
 @media (min-width: 1201px) {
   .footer__inner {
     padding-top: 80px;
@@ -2845,23 +2784,53 @@ main {
     padding-bottom: 40px;
     padding-left: 0;
   }
+
   .footer__grid {
     gap: 36px;
   }
+
   .socials__link {
     width: 38px;
     height: 38px;
   }
 
-}/* Встановлюємо box-sizing для всіх елементів */
-*, *::before, *::after {
-    box-sizing: border-box;
 }
 
-  html, body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
 }
 
+#scrollToTopBtn {
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  width: 50px;
+  height: 50px;
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: #ff6b3d; 
+  color: white;
+  cursor: pointer; 
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px; 
+  line-height: 0; 
+  transition: background-color 0.3s, opacity 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#scrollToTopBtn:hover {
+  background-color: #e55a30; 
+}
