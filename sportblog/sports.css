@@ -13,12 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ============================
-   HEADER
-============================ */
-/* Загальний стиль хедера */
-/* Загальний стиль хедера */
-/* Десктопні стилі */
+
 .header {
     width: 100%;
     position: relative;
@@ -62,7 +57,7 @@ body {
 .social-icons a:hover {
     color: #f5b921;
 }
-/* ======= БУРГЕР: Прихований на ПК ======= */
+
 .burger {
     display: none;
     cursor: pointer;
@@ -73,125 +68,193 @@ body {
     display: none;
 }
 
-/* ======= МОБІЛЬНА ВЕРСІЯ (max-width: 768px) ======= */
 @media (max-width: 768px) {
-    /* ... 1. КОНТЕЙНЕР ШАПКИ ... (Без змін) */
+
     .header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         padding: 15px 20px;
         width: 100%;
-        box-sizing: border-box;
-        
-    }
-    .logo {
-        margin-right: auto;
-        flex-shrink: 0;
     }
     .logo img {
         width: 120px;
     }
     .social-icons {
-        display: none !important;
+        display: none; 
     }
 
-    /* 2. БУРГЕР: Показаний на мобільному */
     .burger {
         display: block;
-        position: static; /* У потоці шапки */
+        position: relative; 
         z-index: 1001;
-
+    }
+    #closeIcon {
+        display: none;
     }
 
-.nav {
+    .nav {
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.4s ease, visibility 0.4s ease;
-
-        z-index: 5000; 
+        position: fixed; 
+        top: 0; 
+        left: 0;
         width: 100%;
-        height: 60vh; 
-        max-height: 500px;
-        border-radius: 0 0 15px 15px;
+        height: 100%; 
+        z-index: 999; 
+    }
+    
+
+    .nav.open {
+        opacity: 1;
+        visibility: visible;
         background: 
-            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Темний шар */
+            linear-gradient(
+                rgba(0, 0, 0, 0.4), 
+                rgba(0, 0, 0, 0.4) 
+            ), 
             url('images4/headerhome.jpg') no-repeat center/cover;
+            
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
-    .nav.open {
-    opacity: 1;
-    position: fixed;
-    visibility: visible;
-    width: 100%; 
-    top: 0; /* Меню починається від самого верху екрана */
-    height: 100%;
-    background: url('images4/headerhome.jpg') no-repeat center/cover;
-    }
-
-    /* 5. ПЕРЕМИКАННЯ СТАНУ ШАПКИ (Керується класом 'menu-open' з JS) */
-    
-    /* КРИТИЧНО: Приховуємо логотип */
     .header.menu-open .logo {
-        display: none !important; 
+        display: none; 
     }
     
-    /* Ховаємо соцмережі та іконку бургер-меню */
-    .header.menu-open .social-icons,
-    .header.menu-open .burger i#openIcon {
-        display: none;
+    .header.menu-open .burger {
+        position: fixed; 
+        right: 20px;
+        top: 25px;
+        z-index: 1001; 
     }
 
- .header.menu-open .burger {
-    position: fixed; /* ЦЕ РОБИТЬ ЇЇ ФІКСОВАНОЮ */
-    right: 20px;
-    top: 25px;
-    z-index: 2001; 
-}
-    
-    /* 6. СТИЛІ МЕНЮ */
     .nav ul {
         flex-direction: column;
         align-items: center;
-        gap: 25px;
-        padding-top: 50px; /* Зсуваємо список вниз, щоб не перекривати "X" */
-        
+        gap: 30px; 
+        padding: 0; 
+        margin-top: 50px; 
     }
     .nav a {
         color: white;
-        text-decoration: none;
-        font-size: 28px;
+        font-size: 32px; 
         font-weight: 700;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        transition: color 0.3s ease;
-        
     }
     .nav a:hover {
         color: #f5b921;
     }
 }
-/* ============================
-    HERO SECTION (BANNER)
-============================ */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.modal-content button {
+  width: 100%;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #666;
+}
+
+.close:hover {
+  color: #000;
+}
+
+#contactForm label {
+
+    display: block; 
+    margin-top: 15px; 
+    margin-bottom: 5px;
+    
+    font-weight: 500;
+    color: #555;
+    font-size: 16px;
+}
+
+
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; 
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.send-btn {
+
+    margin-top: 30px; 
+
+}
+
 .hero-banner {
     width: 100%;
-    /* 📸 Тут вставте ваше фото банера */
     background: url('images4/backgroundsport.jpg') no-repeat center center/cover;
-    height: 70vh; /* Висота екрана (можете змінити) */
+    height: 70vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Для позиціонування .info-bar */
-    padding-bottom: 100px; /* Відступ для інформаційного блоку */
+    position: relative; 
+    padding-bottom: 100px; 
 }
 
 .hero-content {
-    /* Для забезпечення читабельності тексту на фоновому зображенні */
     padding: 20px 40px;
     border-radius: 10px;
 }
@@ -201,18 +264,15 @@ body {
     font-weight: 700;
     color: #fff;
     text-align: center;
-    /* Тінь для кращої читабельності */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
-/* ============================
-    INFO BAR (БЛОК ЗНИЗУ)
-============================ */
+
 .info-bar {
     position: absolute;
-    bottom: -60px; /* ⬅️ Висуваємо блок на банер (половина його висоти) */
+    bottom: -60px; 
     width: 90%;
-    max-width: 900px; /* Обмежуємо ширину, як на фото */
+    max-width: 900px; 
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -234,9 +294,8 @@ body {
 }
 
 .info-icon {
-    width: 50px; /* Розмір вашої PNG-іконки */
+    width: 50px; 
     height: 50px;
-    /* Стилізація круглої підкладки іконки */
     padding: 8px;
     border-radius: 50%;
 }
@@ -255,7 +314,7 @@ body {
     font-weight: 600;
 }
 
-/* ===== МОБІЛЬНА АДАПТАЦІЯ INFO BAR (Опціонально) ===== */
+
 @media (max-width: 768px) {
     .hero-banner {
         height: 60vh;
@@ -267,7 +326,7 @@ body {
     }
 
     .info-bar {
-        bottom: -100px; /* Зсуваємо більше для мобільного */
+        bottom: -100px; 
         width: 95%;
     }
 
@@ -279,9 +338,7 @@ body {
     }
 }
 
-/* ==================================
-    VACATION SECTION (ПЕРЕВАГИ)
-================================== */
+
 .vacation-section {
     padding: 100px 0;
     color: #000;
@@ -290,7 +347,6 @@ body {
 
 .vacation-section .container {
     display: grid;
-    /* Створення сітки для розміщення тексту та зображення */
     grid-template-columns: 1.5fr 1fr; 
     gap: 40px;
     max-width: 1200px;
@@ -301,8 +357,8 @@ body {
 .subtitle {
     font-family: 'Reenie Beanie', cursive;
     font-size: 24px;
-    color: #ff7b00; /* Припускаю, що це ваш акцентний колір */
-    grid-column: 1 / 2; /* Займає першу колонку */
+    color: #ff7b00; 
+    grid-column: 1 / 2; 
 }
 
 .vacation-section h2 {
@@ -322,7 +378,6 @@ body {
     grid-column: 1 / 2;
 }
 
-/* Блок з перевагами (Ocean Cruises, Local Guide) */
 .features-row {
     display: flex;
     gap: 40px;
@@ -339,7 +394,7 @@ body {
 
 .feature-item i {
     font-size: 28px;
-    color: #1e90ff; /* Синій колір для іконок */
+    color: #1e90ff;
 }
 
 .feature-item h4 {
@@ -353,7 +408,6 @@ body {
     color: #888;
 }
 
-/* Кнопка */
 .btn-contact {
     display: inline-block;
     background-color: #ff7b00;
@@ -371,13 +425,13 @@ body {
     background-color: #e06a00;
 }
 
-/* Блок з зображенням */
+
 .image-block {
-    grid-column: 2 / 3; /* Займає другу колонку */
-    grid-row: 1 / span 5; /* Розтягується на всю висоту контенту */
+    grid-column: 2 / 3; 
+    grid-row: 1 / span 5; 
     position: relative;
-    padding: 10px; /* Внутрішній відступ для синьої рамки/тіні */
-    background-color: #e6f0ff; /* Світло-синій фон/рамка */
+    padding: 10px; 
+    background-color: #e6f0ff; 
     border-radius: 15px;
 }
 
@@ -389,16 +443,13 @@ body {
     border-radius: 10px;
 }
 
-/* ==================================
-    PACKAGES SECTION (КАРТКИ)
-================================== */
+
 .packages-section {
     padding: 50px 0 100px;
     color: #000;
     background-color: #fff;
     text-align: center;
-    /* ВИДАЛИТИ position: absolute; */
-    position: relative; /* АБО ЗАЛИШИТИ, ЯКЩО ПОТРІБЕН КОНТЕКСТ */
+    position: relative; 
 }
 .packages-section .subtitle {
     font-family: 'Reenie Beanie', cursive;
@@ -423,14 +474,13 @@ body {
     padding: 0 40px;
 }
 
-/* Стилізація картки */
 .package-card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     text-align: left;
-    position: relative; /* ⬅️ Додано для позиціонування SALE та іконок */
+    position: relative; 
 }
 
 .package-card .card-image {
@@ -444,28 +494,27 @@ body {
     padding: 20px;
 }
 
-/* 🌟 НОВІ СТИЛІ: Іконки під зображенням */
+
 .card-icons {
     position: absolute;
-    top: 215px; /* Регулюйте це значення, щоб розмістити під зображенням */
+    top: 215px; 
     right: 20px;
     display: flex;
     gap: 10px;
-    color: #ff7b00; /* Основний колір іконок (Chiang Mai) */
+    color: #ff7b00; 
     font-size: 14px;
-    pointer-events: none; /* Щоб не блокувати кліки на картці */
+    pointer-events: none; 
 }
-/* Корегування для Бангкока (синій колір іконок) */
+
 .package-card:nth-child(2) .card-icons {
     color: #1e90ff; 
 }
-/* Іконки в картках можуть бути маленькими PNG, якщо ви не використовуєте Font Awesome */
 
 
-/* Стиль для тегу тривалості */
+
 .duration-tag {
     display: inline-block;
-    background-color: #ff7b00; /* ⬅️ Змінено на помаранчевий (як на фото для 1-ї та 3-ї картки) */
+    background-color: #ff7b00; 
     color: #fff;
     font-size: 12px;
     padding: 4px 8px;
@@ -473,17 +522,17 @@ body {
     font-weight: 600;
     margin-bottom: 10px;
 }
-/* 🌟 НОВИЙ СТИЛЬ: Синій тег для Bangkok */
+
 .duration-tag.blue {
     background-color: #1e90ff;
 }
 
-/* 🌟 НОВИЙ СТИЛЬ: Тег SALE */
+
 .sale-tag {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #1e90ff; /* Синій колір */
+    background-color: #1e90ff; 
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -510,7 +559,7 @@ body {
     color: #666;
     line-height: 1.5;
     margin-bottom: 20px;
-    min-height: 60px; /* Для вирівнювання карток */
+    min-height: 60px;
 }
 
 .price-row {
@@ -521,15 +570,15 @@ body {
     border-top: 1px solid #eee;
 }
 
-/* Стиль кнопки Details */
+
 .btn-details {
     display: inline-block;
-    color: #ff7b00; /* Колір тексту кнопки за замовчуванням */
+    color: #ff7b00; 
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
 }
-/* 🌟 НОВИЙ СТИЛЬ: Помаранчевий залитий фон для кнопок 1 та 3 */
+
 .btn-details.orange {
     background-color: #ff7b00;
     color: #fff;
@@ -537,7 +586,6 @@ body {
     border-radius: 5px;
 }
 
-/* 🌟 НОВИЙ СТИЛЬ: Синій залитий фон для кнопки 2 */
 .btn-details.blue {
     background-color: #1e90ff;
     color: #fff;
@@ -556,7 +604,7 @@ body {
     font-weight: 700;
 }
 
-/* 🌟 НОВИЙ СТИЛЬ: Застаріла ціна (тільки для Bangkok) */
+
 .old-price {
     color: #888;
     text-decoration: line-through;
@@ -567,86 +615,81 @@ body {
 
 
 @media (max-width: 768px) {
-    /* ... (Інші стилі, які я надавав раніше) ... */
-    
-    /* HERO SECTION + INFO BAR (Адаптація) */
+  
     .hero-banner {
-        /* Зменшено padding-bottom, щоб info-bar не виїжджав надто далеко вниз */
+
         padding-bottom: 80px; 
     }
     
     .hero-content h1 {
-        font-size: 32px; /* Трохи менший, ніж 36px для кращого вигляду */
+        font-size: 32px; 
     }
     
     .info-bar {
-        /* 💡 Змінений зсув, щоб він не був занадто низько */
+
         bottom: -100px; 
         width: 90%;
-        max-width: 350px; /* Обмежуємо ширину для вертикального макета */
+        max-width: 350px; 
         left: 50%;
         transform: translateX(-50%);
-        padding: 0; /* Прибираємо padding з info-bar */
+        padding: 0; 
     }
 
     .info-bar .container {
         flex-direction: column;
         align-items: flex-start;
-        padding: 25px 30px; /* Додаємо внутрішній відступ тут */
+        padding: 25px 30px; 
         gap: 20px;
         width: 100%;
     }
-    
-    /* 🔴 ВИПРАВЛЕННЯ: Елемент Info-Item */
+
     .info-item {
-        align-items: flex-start; /* Вирівнюємо іконку та текст по верхньому краю */
+        align-items: flex-start; 
         gap: 15px; 
         width: 100%;
-        text-align: left; /* Гарантуємо вирівнювання тексту */
+        text-align: left;
     }
     
     .info-item .info-icon {
         width: 40px; 
         height: 40px;
-        flex-shrink: 0; /* Щоб іконка не стискалася */
-        margin-top: 5px; /* Невеликий відступ для кращого вирівнювання з текстом */
+        flex-shrink: 0; 
+        margin-top: 5px; 
     }
 
     .info-item .label {
-        font-size: 14px; /* Заголовки над значеннями */
+        font-size: 14px;
         margin-bottom: 2px;
     }
 
     .info-item .value {
-        font-size: 16px; /* 💡 Оптимальний розмір для ключових значень */
+        font-size: 16px; 
         font-weight: 700;
         line-height: 1.2;
-        word-break: break-all; /* Дозволяє довгим словам (наприклад, email) переноситися */
+        word-break: break-all; 
     }
     
-    /* Секція Переваг (VACATION SECTION) */
+
     .vacation-section h2 {
         font-size: 32px; 
         line-height: 1.2;
     }
     
     .vacation-section .description {
-        font-size: 15px; /* Легке збільшення тексту */
+        font-size: 15px; 
     }
 
-    /* Картки Packages */
+
     .package-info h4 {
-        font-size: 24px; /* Трохи більший заголовок міста */
+        font-size: 24px; 
     }
     
     .package-info .description {
-        font-size: 15px; /* Більший опис */
+        font-size: 15px; 
     }
 }
 @media (max-width: 992px) {
-    /* 🏔️ Секція Vacation: Перехід на один стовпець */
     .vacation-section .container {
-        /* Змінюємо grid-template-columns: 1.5fr 1fr; на 1fr */
         grid-template-columns: 1fr;
         padding: 0 20px; 
     }
@@ -655,7 +698,6 @@ body {
         font-size: 32px;
     }
     
-    /* Елементи, що раніше займали першу колонку, тепер займають всю ширину */
     .subtitle, 
     .vacation-section h2, 
     .vacation-section .description,
@@ -664,13 +706,12 @@ body {
         grid-column: 1 / 2;
     }
     
-    /* Блок з зображенням (image-block) розташовуємо після контенту */
+
     .image-block {
-        grid-row: auto; /* Повертаємо автоматичне розташування */
-        margin-top: 40px; /* Додаємо відступ зверху */
+        grid-row: auto; 
+        margin-top: 40px; 
     }
     
-    /* Переваги (Ocean Cruises, Local Guide) вирівнюємо вертикально */
     .features-row {
         flex-direction: column;
         gap: 20px;
@@ -678,33 +719,29 @@ body {
 }
 
 @media (max-width: 992px) {
-    /* ... (інші адаптації для 992px) ... */
     
     .packages-grid {
-        /* Встановлюємо, що картки можуть займати 100% ширини */
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-        gap: 20px; /* Зменшуємо проміжок */
+        gap: 20px; 
     }
 
     .packages-section h3 {
-        margin-bottom: 30px; /* Зменшуємо відступ під заголовком */
+        margin-bottom: 30px; 
     }
 }
 @media (max-width: 768px) {
-    /* 📦 Контейнер секції */
     .packages-section {
-        padding: 50px 0 80px; /* Коригуємо вертикальні відступи */
+        padding: 50px 0 80px; 
     }
 
-    /* 📦 Сітка (Grid) */
     .packages-grid {
-        /* На смартфонах переходимо на чіткий один стовпець */
+
         grid-template-columns: 1fr; 
-        padding: 0 20px; /* Горизонтальний відступ для контейнера */
-        gap: 25px; /* Проміжок між картками */
+        padding: 0 20px;
+        gap: 25px;
     }
 
-    /* 📦 Картка (Card) */
+
     .package-card {
         width: 100%;
         max-width: none;
@@ -713,16 +750,16 @@ body {
     }
     
     .package-card .card-image {
-         height: 180px; /* Трохи менша висота зображення на мобільному */
+         height: 180px; 
     }
 
-    /* 📦 Інформація всередині картки */
+
     .package-info {
         padding: 15px 20px 20px;
     }
 
     .package-info h4 {
-        font-size: 22px; /* Збільшуємо заголовок міста */
+        font-size: 22px; 
         margin-bottom: 5px;
     }
     
@@ -733,91 +770,82 @@ body {
     .package-info .description {
         font-size: 14px;
         line-height: 1.4;
-        min-height: auto; /* Прибираємо фіксовану висоту */
+        min-height: auto; 
         margin-bottom: 15px;
     }
 
-    /* 📦 Іконки */
     .card-icons {
-        /* Коригуємо позицію іконок відповідно до нової висоти зображення */
         top: 195px; 
         right: 15px;
         font-size: 16px;
     }
     
-    /* 📦 Рядок з ціною та кнопкою */
     .price-row {
         padding-top: 10px;
     }
     
     .price-value {
-        font-size: 20px; /* Трохи менший розмір ціни */
+        font-size: 20px; 
     }
 }
 @media (max-width: 768px) {
-    /* HEADER: Основні налаштування */
     .header .container {
-        padding: 15px 20px; /* Коригуємо внутрішні відступи */
+        padding: 15px 20px; 
     }
     
     .logo img {
-        width: 120px; /* Зменшуємо логотип */
+        width: 120px; 
     }
 
     .social-icons {
-        display: none; /* Приховуємо іконки соцмереж на мобільному */
+        display: none; 
     }
 
-    /* BURGER ICON: Фіксуємо іконку X у верхньому правому куті */
+
     .burger {
-        display: block; /* Показуємо бургер-кнопку */
-        position: fixed; /* Фіксуємо поверх усього */
+        display: block; 
+        position: fixed; 
         top: 20px;
         right: 20px;
-        z-index: 1001; /* Завжди поверх меню та оверлея */
+        z-index: 1001; 
         color: white;
         font-size: 24px;
         cursor: pointer;
     }
-    
-    /* NAV: Стиль закритого меню (Приховуємо десктопну навігацію) */
+
     .nav {
-        display: none; /* За замовчуванням приховано, JS покаже його через клас .open */
-        
-        /* 💡 Стиль для відкритого меню (темна картка) */
+        display: none; 
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* Центруємо на екрані */
+        transform: translate(-50%, -50%); 
         width: 85%;
         max-width: 400px; 
         height: auto; 
         padding: 50px 30px;
-        border-radius: 30px; /* Великі заокруглення */
+        border-radius: 30px; 
         
-        background-color: rgba(0, 0, 0, 0.9); /* Темний фон картки */
+        background-color: rgba(0, 0, 0, 0.9);
         background-image: none;
         
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
-        /* Анімація */
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.4s ease, visibility 0.4s ease;
         z-index: 999;
     }
     
-    /* NAV: Стиль відкритого меню (УВАГА: ця логіка залежить від JavaScript) */
+
     .nav.open {
-        display: flex; /* Показуємо картку, коли додано клас 'open' */
+        display: flex; 
         opacity: 1;
         visibility: visible;
     }
 
-    /* Темний оверлей на весь екран, коли меню відкрите (для затемнення фону) */
-    /* 💡 Це вимагає, щоб ви додали клас 'menu-open' до <header> або <body> за допомогою JS */
+  
     .header.menu-open::after {
         content: '';
         position: fixed;
@@ -825,11 +853,10 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Затемнення фону */
+        background-color: rgba(0, 0, 0, 0.5); 
         z-index: 998;
     }
-    
-    /* NAV: Список посилань */
+
     .nav ul {
         flex-direction: column;
         gap: 30px;
@@ -838,21 +865,20 @@ body {
     }
 
     .nav a {
-        font-size: 30px; /* Збільшений розмір для мобільного меню */
+        font-size: 30px; 
         font-weight: 600;
         text-align: center;
         padding: 5px 0; 
     }
     
-    /* Логіка перемикання іконок (потребує JS): */
     #closeIcon {
-        display: none; /* Прихована за замовчуванням */
+        display: none; 
     }
     .header.menu-open #openIcon {
-        display: none; /* Приховуємо бургер, коли меню відкрито */
+        display: none;
     }
     .header.menu-open #closeIcon {
-        display: block; /* Показуємо X, коли меню відкрито */
+        display: block; 
     }
 }
 :root {
@@ -953,7 +979,7 @@ body {
   text-decoration: underline;
 }
 
-/* Socials */
+
 .socials {
   list-style: none;
   padding-top: 12px;
@@ -986,7 +1012,7 @@ body {
   opacity: 0.95;
 }
 
-/* Bottom row */
+
 .footer__bottom {
   margin-top: 22px;
   display: grid;
@@ -1016,7 +1042,7 @@ body {
   opacity: 0.5;
 }
 
-/* Payment icons */
+
 .payments {
   display: flex;
   gap: 30px;
@@ -1042,9 +1068,7 @@ body {
   fill: #fff;
 }
 
-/* ===== Breakpoints ===== */
 
-/* b) 481—768px (tablets) */
 @media (min-width: 481px) {
   .footer__inner {
     padding-top: 40px;
@@ -1063,19 +1087,18 @@ body {
   }
 }
 
-/* c) 769—1024px (small screens, laptops) */
 @media (min-width: 769px) {
   .footer__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* ліва колонка: заголовок, права колонка: Address+Contact */
+    grid-template-columns: 1fr 1fr; 
     align-items: start;
     gap: 40px;
   }
 
   .footer__info {
     display: flex;
-    gap: 60px; /* відстань між Address і Contact */
-    align-items: flex-start; /* вирівняння по верхньому краю */
+    gap: 60px;
+    align-items: flex-start; 
   }
 
   .footer__col {
@@ -1083,7 +1106,7 @@ body {
   }
 }
 
-/* d) 1025—1200px (desktops) */
+
 @media (min-width: 1025px) {
   .footer__title {
     font-size: clamp(34px, 4vw, 48px);
@@ -1096,7 +1119,6 @@ body {
   }
 }
 
-/* e) 1201px+ (xl screens & TV) */
 @media (min-width: 1201px) {
   .footer__inner {
     padding-top: 80px;
@@ -1112,7 +1134,7 @@ body {
     height: 38px;
   }
 
-}/* Встановлюємо box-sizing для всіх елементів */
+}
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -1124,3 +1146,27 @@ body {
   overflow-x: hidden;
 }
 
+#scrollToTopBtn {
+  display: none; /* Спочатку приховати кнопку */
+  position: fixed; /* Зафіксувати позицію на екрані */
+  bottom: 20px; /* Відступ від низу */
+  width: 50px;
+  height: 50px;
+  right: 30px; /* Відступ від правого краю */
+  z-index: 99; /* Переконатися, що кнопка поверх інших елементів */
+  border: none; /* Прибрати стандартну рамку */
+  outline: none; /* Прибрати контур фокусу */
+  background-color: #ff6b3d; /* Колір вашого оранжевого акценту */
+  color: white; /* Колір тексту/стрілки */
+  cursor: pointer; /* Зробити курсор "клікабельним" */
+  padding: 15px; /* Внутрішній відступ */
+  border-radius: 50%; /* Зробити кнопку круглою */
+  font-size: 18px; /* Розмір стрілки */
+  line-height: 0; /* Вирівнювання символу стрілки */
+  transition: background-color 0.3s, opacity 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легка тінь */
+}
+
+#scrollToTopBtn:hover {
+  background-color: #e55a30; /* Темніший колір при наведенні */
+}
