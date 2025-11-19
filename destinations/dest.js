@@ -1,68 +1,150 @@
-const burger = document.getElementById('burger');
-const openIcon = document.getElementById('openIcon');
-const closeIcon = document.getElementById('closeIcon');
-const nav = document.getElementById('nav');
+document.addEventListener("DOMContentLoaded", () => {
 
-burger.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  openIcon.style.display = isOpen ? 'none' : 'inline';
-  closeIcon.style.display = isOpen ? 'inline' : 'none';
-  burger.setAttribute('aria-expanded', isOpen);
+  const burger = document.getElementById('burger');
+  const openIcon = document.getElementById('openIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  const nav = document.getElementById('nav');
+
+
+  const modal = document.getElementById('modal'); 
+  const openBtns = Array.from(document.querySelectorAll('.open-modal'));
+
+  const closeBtn = modal ? modal.querySelector('.close') : null;
+  const contactForm = document.getElementById('contactForm');
+
+
+
+  const toggleMenu = (isOpen) => {
+
+    if (!nav || !burger) return;
+
+    const shouldOpen = (isOpen !== undefined) ? isOpen : !nav.classList.contains('open');
+
+    nav.classList.toggle('open', shouldOpen);
+    
+
+    openIcon.style.display = shouldOpen ? 'none' : 'inline';
+    closeIcon.style.display = shouldOpen ? 'inline' : 'none';
+    
+
+    burger.setAttribute('aria-expanded', shouldOpen);
+  };
+
+  if (burger) {
+    burger.addEventListener('click', () => {
+        toggleMenu(); 
+    });
+  }
+
+
+  document.addEventListener('click', (event) => {
+    if (!nav) return;
+    
+    const isMenuOpen = nav.classList.contains('open');
+    
+    if (isMenuOpen) {
+      const isClickInsideNav = nav.contains(event.target);
+      const isClickOnBurger = burger.contains(event.target);
+
+      if (!isClickInsideNav && !isClickOnBurger) {
+
+        toggleMenu(false); 
+      }
+    }
+  });
+
+
+
+
+  if (modal) {
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        alert('✅ Повідомлення відправлено. Дякуємо!');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        contactForm.reset();
+      });
+    }
+
+  } else {
+    console.warn("Елемент з id='modal' не знайдено.");
+  }
+
 });
 
 
-  if (typeof Swiper !== "undefined") {
-    const travelSwiper = new Swiper(".travelSwiper", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      loop: true,
-      grabCursor: true,
-      centeredSlides: false,
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.classList.add("fade-out");
 
-      // === головне! Lazy loading + preload ===
-      preloadImages: false,
-      lazy: {
-        loadPrevNext: true, // підвантажує сусідні
-        loadPrevNextAmount: 2, // на 2 слайди вперед/назад
-      },
-      watchSlidesProgress: true,
-      observer: true,
-      observeParents: true,
-
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // адаптивність
-      breakpoints: {
-        1200: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        992: {
-          slidesPerView: 2,
-          spaceBetween: 25,
-        },
-        768: {
-          slidesPerView: 1.3,
-          spaceBetween: 20,
-          centeredSlides: true,
-        },
-        480: {
-          slidesPerView: 1.1,
-          spaceBetween: 15,
-          centeredSlides: true,
-        },
-      },
-    });
-
-    console.log("✅ Swiper initialized:", travelSwiper);
-  } else {
-    console.warn("⚠️ Swiper.js не підключений — перевір лінк у HTML");
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 800); 
   }
+});
 
+
+let mybutton = document.getElementById("scrollToTopBtn");
+
+function scrollFunction() {
+
+  if (!mybutton) return; 
+
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+window.onscroll = scrollFunction;
+
+
+if (mybutton) {
+  mybutton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+} else {
+  console.warn("Елемент з id='scrollToTopBtn' не знайдено.");
+}
