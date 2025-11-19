@@ -148,3 +148,152 @@ if (mybutton) {
 } else {
   console.warn("Елемент з id='scrollToTopBtn' не знайдено.");
 }
+
+
+const travelDestinationsData = [
+    {
+        name: "Греція",
+        description: "Відкрийте для себе стародавню цивілізацію та райський куточок.",
+        image: "images3/greeece.jpg",
+        badge: { text: "УСІ ТУРИ", class: "orange" }
+    },
+    {
+        name: "Єгипет",
+        description: "Відкрийте для себе країну фараонів і пірамід.",
+        image: "images3/eegypt.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Африка",
+        description: "Відкрийте для себе колиску життя та багаті традиції.",
+        image: "images3/afrrica.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Франція",
+        description: "Відчуйте романтику мистецтва та чудового вина.",
+        image: "images3/fraance.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Європа",
+        description: "Відкрийте для себе чарівність старовинного світу та вічну історію",
+        image: "images3/europe.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Агарта",
+        description: "Шукайте внутрішнє світло і приховане знання",
+        image: "images3/thaailand.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Азія",
+        description: "Прийміть древню мудрість і яскраві спеції.",
+        image: "images3/aasia.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Італія",
+        description: "Насолоджуйтесь величною історією та вишуканими смаками.",
+        image: "images3/iitaly.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Каліфорнія",
+        description: "У пошуках золотого узбережжя і безмежних мрій.",
+        image: "images3/california.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    },
+    {
+        name: "Японія",
+        description: "Станьте свідком блискучого майбутнього та спокійного минулого.",
+        image: "images3/japan.jpg",
+        badge: { text: "УСІ ТУРИ", class: "blue" }
+    }
+];
+
+
+function renderTravelSwiperSlides() {
+    const swiperWrapper = document.getElementById('travel-swiper-wrapper');
+    if (!swiperWrapper) return;
+
+    let slidesHTML = '';
+
+    travelDestinationsData.forEach(item => {
+        const slideHTML = `
+            <div class="swiper-slide travel-card">
+                <div class="card-image">
+                    <img src="${item.image}" alt="${item.name}" />
+                    <span class="badge ${item.badge.class}">${item.badge.text}</span>
+                    <div class="card-text">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        slidesHTML += slideHTML;
+    });
+
+    swiperWrapper.innerHTML = slidesHTML;
+}
+
+
+function initTravelSwiper() {
+
+    renderTravelSwiperSlides();
+
+
+    if (document.querySelector('.travelSwiper')) {
+        try {
+
+            const travelSwiper = new Swiper(".travelSwiper", {
+    
+                direction: 'horizontal',
+                loop: true,
+                speed: 600,
+              
+                slidesPerView: 1,
+                spaceBetween: 30, 
+
+                breakpoints: {
+
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+ 
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 30
+                    }
+                },
+
+
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+
+
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                
+
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+            });
+        } catch (error) {
+            console.error("Помилка ініціалізації Swiper. Переконайтеся, що бібліотека підключена.", error);
+        }
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', initTravelSwiper);
+
