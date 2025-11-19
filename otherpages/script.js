@@ -1,85 +1,149 @@
-const burger = document.getElementById('burger');
-const openIcon = document.getElementById('openIcon');
-const closeIcon = document.getElementById('closeIcon');
-const nav = document.getElementById('nav');
+document.addEventListener("DOMContentLoaded", () => {
 
-burger.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  openIcon.style.display = isOpen ? 'none' : 'inline';
-  closeIcon.style.display = isOpen ? 'inline' : 'none';
-  burger.setAttribute('aria-expanded', isOpen);
+  const burger = document.getElementById('burger');
+  const openIcon = document.getElementById('openIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  const nav = document.getElementById('nav');
+
+
+  const modal = document.getElementById('modal'); 
+  const openBtns = Array.from(document.querySelectorAll('.open-modal'));
+
+  const closeBtn = modal ? modal.querySelector('.close') : null;
+  const contactForm = document.getElementById('contactForm');
+
+
+  const toggleMenu = (isOpen) => {
+
+    if (!nav || !burger) return;
+
+    const shouldOpen = (isOpen !== undefined) ? isOpen : !nav.classList.contains('open');
+
+    nav.classList.toggle('open', shouldOpen);
+    
+
+    openIcon.style.display = shouldOpen ? 'none' : 'inline';
+    closeIcon.style.display = shouldOpen ? 'inline' : 'none';
+    
+
+    burger.setAttribute('aria-expanded', shouldOpen);
+  };
+
+
+  if (burger) {
+    burger.addEventListener('click', () => {
+        toggleMenu(); 
+    });
+  }
+
+
+  document.addEventListener('click', (event) => {
+    if (!nav) return;
+    
+    const isMenuOpen = nav.classList.contains('open');
+    
+    if (isMenuOpen) {
+      const isClickInsideNav = nav.contains(event.target);
+      const isClickOnBurger = burger.contains(event.target);
+
+      if (!isClickInsideNav && !isClickOnBurger) {
+
+        toggleMenu(false); 
+      }
+    }
+  });
+
+
+
+  if (modal) {
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      });
+    }
+
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        alert('✅ Повідомлення відправлено. Дякуємо!');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        contactForm.reset();
+      });
+    }
+
+  } else {
+    console.warn("Елемент з id='modal' не знайдено.");
+  }
+
 });
 
-const priceRange = document.querySelector(".price-range");
-const priceValue = document.getElementById("priceValue");
 
-if (priceRange) {
-  priceRange.addEventListener("input", () => {
-    priceValue.textContent = priceRange.value;
-  });
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.classList.add("fade-out");
+
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 800); 
+  }
+});
+
+
+let mybutton = document.getElementById("scrollToTopBtn");
+
+function scrollFunction() {
+
+  if (!mybutton) return; 
+
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
 }
 
-  const range = document.querySelector('.price-range');
 
-  function updateRangeColor(e) {
-    const min = e.target.min ? e.target.min : 0;
-    const max = e.target.max ? e.target.max : 100;
-    const val = ((e.target.value - min) / (max - min)) * 100;
+window.onscroll = scrollFunction;
 
-    e.target.style.background = `linear-gradient(to right, #1D1D54 ${val}%, #fff ${val}%)`;
-  }
 
-  range.addEventListener('input', updateRangeColor);
-
-  // виклик при завантаженні сторінки, щоб фон одразу був правильний
-  updateRangeColor({ target: range });
-
-  const pages = document.querySelectorAll('.tour-page');
-  const buttons = document.querySelectorAll('.page-btn');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Змінюємо активну кнопку
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Перемикаємо сторінки
-      const page = btn.getAttribute('data-page');
-      pages.forEach(p => p.classList.remove('active'));
-      document.querySelector(`.tour-page:nth-child(${page})`).classList.add('active');
+if (mybutton) {
+  mybutton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
   });
-
-   // Отримуємо всі сторінки турів і кнопки
-  const tourPages = document.querySelectorAll('.tour-page');
-  const pageButtons = document.querySelectorAll('.page-btn');
-
-  // Функція перемикання сторінок
-  function showPage(pageNumber) {
-    // Ховаємо всі сторінки
-    tourPages.forEach((page) => page.classList.remove('active'));
-    // Знімаємо активність з усіх кнопок
-    pageButtons.forEach((btn) => btn.classList.remove('active'));
-
-    // Знаходимо потрібну сторінку і кнопку
-    const targetPage = document.querySelector(`.tour-page:nth-of-type(${pageNumber})`);
-    const targetButton = document.querySelector(`.page-btn[data-page="${pageNumber}"]`);
-
-    // Показуємо потрібну сторінку і активуємо кнопку
-    if (targetPage) targetPage.classList.add('active');
-    if (targetButton) targetButton.classList.add('active');
-  }
-
-  // Додаємо слухачі кліків до кнопок
-  pageButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const pageNum = btn.getAttribute('data-page');
-      showPage(pageNum);
-    });
-  });
-
-  // Показуємо першу сторінку при завантаженні
-  showPage(1);
-
-  
-
+} else {
+  console.warn("Елемент з id='scrollToTopBtn' не знайдено.");
+}
