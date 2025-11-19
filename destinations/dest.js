@@ -149,9 +149,6 @@ if (mybutton) {
   console.warn("Елемент з id='scrollToTopBtn' не знайдено.");
 }
 
-// =========================================================
-// 1. ДАНІ ДЛЯ SWIPER
-// =========================================================
 
 const travelDestinationsData = [
     {
@@ -217,10 +214,6 @@ const travelDestinationsData = [
 ];
 
 
-// =========================================================
-// 2. ФУНКЦІЯ РЕНДЕРИНГУ СЛАЙДІВ
-// =========================================================
-
 function renderTravelSwiperSlides() {
     const swiperWrapper = document.getElementById('travel-swiper-wrapper');
     if (!swiperWrapper) return;
@@ -246,54 +239,50 @@ function renderTravelSwiperSlides() {
     swiperWrapper.innerHTML = slidesHTML;
 }
 
-// =========================================================
-// 3. ФУНКЦІЯ ІНІЦІАЛІЗАЦІЇ SWIPER
-// =========================================================
 
 function initTravelSwiper() {
-    // Спочатку рендеримо контент
+
     renderTravelSwiperSlides();
 
-    // Перевіряємо, чи існує контейнер Swiper
+
     if (document.querySelector('.travelSwiper')) {
         try {
-            // Ініціалізація Swiper.js
+
             const travelSwiper = new Swiper(".travelSwiper", {
-                // Налаштування Swiper для карток
+    
                 direction: 'horizontal',
                 loop: true,
                 speed: 600,
-                
-                // Параметри для адаптивності та відображення кількох карток
+              
                 slidesPerView: 1,
-                spaceBetween: 30, // Відстань між картками (можна змінити у CSS)
+                spaceBetween: 30, 
 
                 breakpoints: {
-                    // Коли ширина екрана >= 640px
+
                     640: {
                         slidesPerView: 2,
                         spaceBetween: 20
                     },
-                    // Коли ширина екрана >= 1024px
+ 
                     1024: {
                         slidesPerView: 4,
                         spaceBetween: 30
                     }
                 },
 
-                // Пагінація (крапки)
+
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
                 },
 
-                // Навігація (стрілки)
+
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
                 
-                // Автопрокрутка
+
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
@@ -306,13 +295,5 @@ function initTravelSwiper() {
 }
 
 
-// =========================================================
-// 4. ЗАПУСК
-// =========================================================
-
-// Запускаємо ініціалізацію Swiper (яка включає рендеринг)
 document.addEventListener('DOMContentLoaded', initTravelSwiper);
 
-
-// ❗️ Примітка: Ваш існуючий код (бургер, модалка, тощо) має бути тут 
-// (перед або після цього блоку коду, але всередині <script>).
