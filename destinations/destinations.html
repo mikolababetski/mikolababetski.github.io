@@ -1,253 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Love Travel - Our Packages</title>
-
-  <!-- ===== STYLES ===== -->
+ <link rel="stylesheet" href="..//normilize.css" />
   <link rel="stylesheet" href="destinations.css" />
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
 <body>
-  <!-- ===== HEADER ===== -->
-<header class="header">
-  <div class="container">
-    <div class="logo">
-      <img src="images3/logotravel.png" alt="Love Travel Logo" />
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images3/logotravel.png" alt="Love Travel Logo" />
+      </div>
+
+      <nav class="nav" id="nav">
+        <ul>
+          <li><a href="../index.html">Головна</a></li>
+          <li><a href="..//otherpages/search.html">Подорожі</a></li>
+          <li><a href="destinations.html">Пункти </a></li>
+          <li><a href="../page404/page404.html">Покупки</a></li>
+          <li><a href="..//sportblog/sport.html">Блог</a></li>
+          <li><a href="#" class="open-modal">Звязок з нами</a></li>
+        </ul>
+      </nav>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+      <div id="burger" class="burger" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
+        <i id="openIcon" class="fa-solid fa-bars"></i>
+        <i id="closeIcon" class="fa-solid fa-xmark"></i>
+      </div>
     </div>
+  </header>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Звязок з нами</h2>
+      <form id="contactForm">
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" name="name" required>
 
-    <!-- Навігація -->
-    <nav class="nav" id="nav">
-      <ul>
-        <li><a href="../index.html">Головна</a></li>
-        <li><a href="#">Travel</a></li>
-        <li><a href="#">Pages</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
+        <label for="email">Емейл:</label>
+        <input type="email" id="email" name="email" required>
 
-    <!-- Соцмережі -->
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
+        <label for="message">Повідомлення:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-    <!-- Бургер-кнопка -->
-    <div id="burger" class="burger" role="button" tabindex="0" aria-label="Menu" aria-expanded="false">
-      <i id="openIcon" class="fa-solid fa-bars"></i>
-      <i id="closeIcon" class="fa-solid fa-xmark"></i>
+        <button type="submit" class="send-btn">Відправити</button>
+      </form>
     </div>
   </div>
-</header>
-
-<!-- ===== HERO SECTION ===== -->
-<section class="hero">
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1>Destinations</h1>
+  <button id="scrollToTopBtn" title="Go to top">&#9650;</button>
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Пункти призначення</h1>
+      </div>
     </div>
-  </div>
-</section>  
-
-
-  <!-- ===== SWIPER SECTION ===== -->
+  </section>
   <section class="destinations">
     <div class="swiper travelSwiper">
       <div class="swiper-wrapper">
-        <!-- Картка 1 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/greeece.jpg" alt="Greece" />
-            <span class="badge orange">ALL PACKAGES</span>
+            <span class="badge orange">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Greece</h3>
-              <p>Experience an ancient civilization & paradise.</p>
+              <h3>Греція</h3>
+              <p>Відкрийте для себе стародавню цивілізацію та райський куточок.</p>
             </div>
           </div>
         </div>
 
-        <!-- Картка 2 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/eegypt.jpg" alt="Egypt" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Egypt</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Єгипет</h3>
+              <p>Відкрийте для себе країну фараонів і пірамід.</p>
             </div>
           </div>
         </div>
 
-    <!-- Картка 3 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/afrrica.jpg" alt="Africa" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Africa</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Африка</h3>
+              <p>Відкрийте для себе колиску життя та багаті традиції.</p>
             </div>
           </div>
         </div>
-            <!-- Картка 4 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/fraance.jpg" alt="France" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>France</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Францію</h3>
+              <p>Відчуйте романтику мистецтва та чудового вина.</p>
             </div>
           </div>
         </div>
-            <!-- Картка 5 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/europe.jpg" alt="Europe" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Europe</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Європа</h3>
+              <p>Відкрийте для себе чарівність старовинного світу та вічну історію</p>
             </div>
           </div>
         </div>
-            <!-- Картка 6 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/thaailand.jpg" alt="Thailand" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Thailand</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Агарта</h3>
+              <p>Шукайте внутрішнє світло і приховане знання</p>
             </div>
           </div>
         </div>
-            <!-- Картка 7 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/aasia.jpg" alt="Asia" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Asia</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Азія</h3>
+              <p>Прийміть древню мудрість і яскраві спеції.</p>
             </div>
           </div>
         </div>
-            <!-- Картка 8 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/iitaly.jpg" alt="Italy" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Italy</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Італія</h3>
+              <p>Насолоджуйтесь величною історією та вишуканими смаками.</p>
             </div>
           </div>
         </div>
-            <!-- Картка 9 -->
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/california.jpg" alt="California" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>California</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Каліфорнія</h3>
+              <p>У пошуках золотого узбережжя і безмежних мрій.</p>
             </div>
           </div>
         </div>
-            <!-- Картка 10 -->
+
         <div class="swiper-slide travel-card">
           <div class="card-image">
             <img src="images3/japan.jpg" alt="Japan" />
-            <span class="badge blue">ALL PACKAGES</span>
+            <span class="badge blue">УСІ ТУРИ</span>
             <div class="card-text">
-              <h3>Japan</h3>
-              <p>Discover the land of Pharaohs & pyramids.</p>
+              <h3>Японія</h3>
+              <p>Станьте свідком блискучого майбутнього та спокійного минулого.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Навігація -->
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-pagination"></div>
     </div>
   </section>
-<footer class="travel-footer">
-  <div class="footer__inner">
-    <h2 class="footer__title">
-      <span class="accent"></span>
-    </h2>
+  <footer class="travel-footer">
+    <div class="footer__inner">
+      <h2 class="footer__title">
+        <span class="accent"></span>
+      </h2>
 
 
+      <div class="footer__grid">
 
-<div class="footer__grid">
-  <!-- Ліва колонка -->
-  <h2 class="footer__title">
-    Подорожуйте за межі своєї уяви, <br>
-    з нашим <span class="accent">Туристичне агентство!</span>
-  </h2>
+        <h2 class="footer__title">
+          Подорожуйте за межі своєї уяви, <br>
+          з нашим <span class="accent">Туристичне агентство!</span>
+        </h2>
 
-  <!-- Права колонка -->
-  <div class="footer__info">
-    <!-- Адреса -->
-    <div class="footer__col">
-      <h3 class="footer__heading">Адреса</h3>
-      <p class="footer__address">
-        1080 Брікелл-авеню<br>
-        Маямі – Флорида<br>
-        Сполучені Штати Америки
-      </p>
-      <ul class="socials">
-        <li><a href="#"><img src="images3/acebook.png" alt="Facebook"></a></li>
-        <li><a href="#"><img src="images3/twitter.png" alt="Twitter"></a></li>
-        <li><a href="#"><img src="images3/youtube.png" alt="YouTube"></a></li>
-      </ul>
-    </div>
 
-    <!-- Контакти -->
-    <div class="footer__col">
-      <h3 class="footer__heading">Контакти</h3>
-      <a href="mailto:info@travel.com" class="btn-mail">info@travel.com</a>
-      <p><a href="tel:+01483593284" class="footer__phone">+01 483 593 284</a></p>
-    </div>
-  </div>
-</div>
+        <div class="footer__info">
 
-    <!-- Bottom -->
-    <div class="footer__bottom">
-      <div class="footer__links">
-        <a href="#">Тема ВордПресс для подорожей</a>
-        <span class="dot">•</span>
-        <a href="#">Оренда</a>
-        <span class="dot">•</span>
-        <a href="#">Страхування</a>
+          <div class="footer__col">
+            <h3 class="footer__heading">Адреса</h3>
+            <p class="footer__address">
+              1080 Брікелл-авеню<br>
+              Маямі – Флорида<br>
+              Сполучені Штати Америки
+            </p>
+            <ul class="socials">
+              <li><a href="#"><img src="images3/acebook.png" alt="Facebook"></a></li>
+              <li><a href="#"><img src="images3/twitter.png" alt="Twitter"></a></li>
+              <li><a href="#"><img src="images3/youtube.png" alt="YouTube"></a></li>
+            </ul>
+          </div>
+
+
+          <div class="footer__col">
+            <h3 class="footer__heading">Контакти</h3>
+            <a href="mailto:info@travel.com" class="btn-mail">info@travel.com</a>
+            <p><a href="tel:+01483593284" class="footer__phone">+01 483 593 284</a></p>
+          </div>
+        </div>
       </div>
-      <div class="payments">
-        <img src="images3/visa.png" alt="Visa">
-        <img src="images3/sigma.png" alt="Stripe">
-        <img src="images3/paypal.png" alt="Paypal">
-        <img src="images3/mastercard.png" alt="Mastercard">
+
+      <div class="footer__bottom">
+        <div class="footer__links">
+          <a href="#">Тема ВордПресс для подорожей</a>
+          <span class="dot">•</span>
+          <a href="#">Оренда</a>
+          <span class="dot">•</span>
+          <a href="#">Страхування</a>
+        </div>
+        <div class="payments">
+          <img src="images3/visa.png" alt="Visa">
+          <img src="images3/sigma.png" alt="Stripe">
+          <img src="images3/paypal.png" alt="Paypal">
+          <img src="images3/mastercard.png" alt="Mastercard">
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="dest.js"></script>
 </body>
+
 </html>
