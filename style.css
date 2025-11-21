@@ -3,7 +3,6 @@ body {
   width: 100%;
   font-family: Arial, sans-serif;
   margin: 0;
-  background: linear-gradient(90deg, #e0e0e0, #bdbdbd);
 }
 
 main {
@@ -2834,3 +2833,4 @@ body {
 #scrollToTopBtn:hover {
   background-color: #e55a30; 
 }
+
