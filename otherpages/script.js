@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+const header = document.querySelector('.header');
   const burger = document.getElementById('burger');
   const openIcon = document.getElementById('openIcon');
   const closeIcon = document.getElementById('closeIcon');
@@ -12,22 +12,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = modal ? modal.querySelector('.close') : null;
   const contactForm = document.getElementById('contactForm');
 
+const toggleMenu = (isOpen) => {
+  if (!nav || !burger || !header) return;
 
-  const toggleMenu = (isOpen) => {
+  const shouldOpen =
+    (isOpen !== undefined)
+      ? isOpen
+      : !nav.classList.contains('open');
 
-    if (!nav || !burger) return;
+  nav.classList.toggle('open', shouldOpen);
+  header.classList.toggle('menu-open', shouldOpen);
 
-    const shouldOpen = (isOpen !== undefined) ? isOpen : !nav.classList.contains('open');
+  openIcon.style.display = shouldOpen ? 'none' : 'inline';
+  closeIcon.style.display = shouldOpen ? 'inline' : 'none';
 
-    nav.classList.toggle('open', shouldOpen);
-    
-
-    openIcon.style.display = shouldOpen ? 'none' : 'inline';
-    closeIcon.style.display = shouldOpen ? 'inline' : 'none';
-    
-
-    burger.setAttribute('aria-expanded', shouldOpen);
-  };
+  burger.setAttribute('aria-expanded', shouldOpen);
+};
 
 
   if (burger) {
