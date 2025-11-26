@@ -788,99 +788,7 @@ body {
         font-size: 20px; 
     }
 }
-@media (max-width: 768px) {
-    .header .container {
-        padding: 15px 20px; 
-    }
-    
-    .logo img {
-        width: 120px; 
-    }
 
-    .social-icons {
-        display: none; 
-    }
-
-
-    .burger {
-        display: block; 
-        position: fixed; 
-        top: 20px;
-        right: 20px;
-        z-index: 1001; 
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav {
-        display: none; 
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); 
-        width: 85%;
-        max-width: 400px; 
-        height: auto; 
-        padding: 50px 30px;
-        border-radius: 30px; 
-        
-        background-color: rgba(0, 0, 0, 0.9);
-        background-image: none;
-        
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
-        z-index: 999;
-    }
-    
-
-    .nav.open {
-        display: flex; 
-        opacity: 1;
-        visibility: visible;
-    }
-
-  
-    .header.menu-open::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); 
-        z-index: 998;
-    }
-
-    .nav ul {
-        flex-direction: column;
-        gap: 30px;
-        padding: 0;
-        width: auto;
-    }
-
-    .nav a {
-        font-size: 30px; 
-        font-weight: 600;
-        text-align: center;
-        padding: 5px 0; 
-    }
-    
-    #closeIcon {
-        display: none; 
-    }
-    .header.menu-open #openIcon {
-        display: none;
-    }
-    .header.menu-open #closeIcon {
-        display: block; 
-    }
-}
 :root {
   --footer-bg: url('images4/footer.jpg');
   --overlay: rgba(8, 15, 30, .62);
@@ -1147,26 +1055,26 @@ body {
 }
 
 #scrollToTopBtn {
-  display: none; /* Спочатку приховати кнопку */
-  position: fixed; /* Зафіксувати позицію на екрані */
-  bottom: 20px; /* Відступ від низу */
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
   width: 50px;
   height: 50px;
-  right: 30px; /* Відступ від правого краю */
-  z-index: 99; /* Переконатися, що кнопка поверх інших елементів */
-  border: none; /* Прибрати стандартну рамку */
-  outline: none; /* Прибрати контур фокусу */
-  background-color: #ff6b3d; /* Колір вашого оранжевого акценту */
-  color: white; /* Колір тексту/стрілки */
-  cursor: pointer; /* Зробити курсор "клікабельним" */
-  padding: 15px; /* Внутрішній відступ */
-  border-radius: 50%; /* Зробити кнопку круглою */
-  font-size: 18px; /* Розмір стрілки */
-  line-height: 0; /* Вирівнювання символу стрілки */
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: #ff6b3d; 
+  color: white; 
+  cursor: pointer; 
+  padding: 15px; 
+  border-radius: 50%; 
+  font-size: 18px;
+  line-height: 0; 
   transition: background-color 0.3s, opacity 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легка тінь */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 #scrollToTopBtn:hover {
-  background-color: #e55a30; /* Темніший колір при наведенні */
+  background-color: #e55a30; 
 }
