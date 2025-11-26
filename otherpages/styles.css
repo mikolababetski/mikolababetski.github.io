@@ -82,86 +82,104 @@ body {
 }
 
 
-
 @media (max-width: 768px) {
 
-    .header .container {
-        padding: 15px 20px;
-        width: 100%;
-    }
-    .logo img {
-        width: 120px;
-    }
-    .social-icons {
-        display: none; 
-    }
+  .header .container {
+    padding: 15px 20px;
+    width: 100%;
+  }
 
-    .burger {
-        display: block;
-        position: relative; 
-        z-index: 1001;
-    }
-    #closeIcon {
-        display: none;
-    }
+  .logo img {
+    width: 120px;
+  }
 
-    .nav {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
+  .social-icons {
+    display: none;
+  }
 
-        position: fixed; 
-        top: 0; 
-        left: 0;
-        width: 100%;
-        height: 100vh; 
-        z-index: 999; 
-    }
-    
+  .burger {
+    display: block;
+    position: relative;
+    z-index: 3000; /* ✅ вище за меню */
+  }
 
-    .nav.open {
-        opacity: 1;
-        visibility: visible;
-        background: 
-            linear-gradient(
-                rgba(0, 0, 0, 0.4), 
-                rgba(0, 0, 0, 0.4) 
-            ), 
-            url('images2/headerhome.jpg') no-repeat center/cover;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+  #closeIcon {
+    display: none;
+  }
 
-    .header.menu-open .logo {
-        display: none; 
-    }
-    
-    .header.menu-open .burger {
-        position: fixed; 
-        right: 20px;
-        top: 25px;
-        z-index: 1001; 
-    }
+  /* ===== МЕНЮ (CLOSED) ===== */
+  .nav {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-    .nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px; 
-        padding: 0; 
-        margin-top: 50px; 
-    }
-    .nav a {
-        color: white;
-        font-size: 32px; 
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
-    .nav a:hover {
-        color: #f5b921;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 2000;
+  }
+
+  /* ===== МЕНЮ (OPEN) ===== */
+  .nav.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+      url('images2/headerhome.jpg') no-repeat center/cover;
+
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* прибираємо фон хедера */
+  .header.menu-open .container {
+    background: transparent;
+  }
+
+  .header.menu-open .logo {
+    display: none;
+  }
+
+  .header.menu-open .burger {
+    position: fixed;
+    right: 20px;
+    top: 25px;
+    z-index: 3000;
+  }
+
+  /* ===== СПИСОК ===== */
+  .nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav a {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .nav a:hover {
+    color: #f5b921;
+  }
+
 }
 
 .modal {
@@ -458,17 +476,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .nav ul {
-    position: absolute;
-    top: 70px;
-    right: 30px;
-    background: rgba(0, 0, 0, 0.9);
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    border-radius: 10px;
-    display: none;
-  }
+  
 
   .nav ul.open {
     display: flex;
